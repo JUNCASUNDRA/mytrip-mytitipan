@@ -12,32 +12,48 @@ File: `[flow-name].md` atau `[flow-name].png`
 |------|-------------|--------|
 | Registration Flow | Alur pendaftaran user baru | ⬜ Todo |
 | Login Flow | Alur login user | ⬜ Todo |
-| Search & Browse Flow | Alur pencarian dan browsing | ⬜ Todo |
-| Order Flow | Alur pemesanan | ⬜ Todo |
-| Payment Flow | Alur pembayaran | ⬜ Todo |
-| Profile Flow | Alur manajemen profil | ⬜ Todo |
+| Search & Browse Flow | Alur pencarian traveler dan produk | 🚧 In Progress |
+| Request-to-Payment Flow | Alur dari Shopper buat request sampai bayar Escrow | ✅ Defined |
+| Trip-to-Fulfillment Flow | Alur Traveler buat trip sampai kirim barang | ✅ Defined |
+| Profile & Reputation Flow | Alur manajemen profil dan sistem badge | ⬜ Todo |
 
-## Example Flow: Registration
+## Core Flow: Shopper Request-to-Payment
 
 ```mermaid
-flowchart TD
-    A[Open App] --> B{Has Account?}
-    B -->|Yes| C[Login Page]
-    B -->|No| D[Registration Page]
-    D --> E{Registration Method}
-    E -->|Email| F[Enter Email & Password]
-    E -->|Google| G[Google OAuth]
-    E -->|Apple| H[Apple Sign-in]
-    F --> I[Email Verification]
-    I --> J[Onboarding]
-    G --> J
-    H --> J
-    J --> K[Complete Profile]
-    K --> L[Home Page]
-    C --> M{Valid Credentials?}
-    M -->|Yes| L
-    M -->|No| N[Error Message]
-    N --> C
+sequenceDiagram
+    participant S as Shopper
+    participant P as Platform
+    participant T as Traveler
+
+    S->>P: Browse Feed/Search Trip
+    P-->>S: Display Verified Travelers
+    S->>P: Fill Request Form (Item, Budget)
+    P->>T: Notify New Request
+    T->>P: Send Final Quote (Price + Fee + Shipping)
+    P->>S: Notify Quote Received
+    S->>P: Approve & Pay via Payment Gateway
+    P->>P: Lock Funds in Escrow
+    P->>T: Notify: Payment Secured, Start Purchasing
+```
+
+## Core Flow: Traveler Trip-to-Fulfillment
+
+```mermaid
+sequenceDiagram
+    participant T as Traveler
+    participant P as Platform
+    participant S as Shopper
+
+    T->>P: Create Trip (Destination, Dates)
+    P->>S: Notify Followers / Update Feed
+    T->>T: Purchase Items at Destination
+    T->>P: Upload Proof of Purchase (Receipt/Photo)
+    P->>S: Update Status to "Purchased"
+    T->>P: Generate Shipping Label (Return to ID)
+    T->>P: Input Tracking Number
+    P->>S: Update Status to "Shipped"
+    S->>P: Confirm Delivery
+    P->>T: Release Funds to Wallet
 ```
 
 ---
