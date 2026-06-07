@@ -22,13 +22,14 @@ Setiap file user story di folder ini mengikuti format:
 
 ## Epic Index
 
-| Epic | Description | Stories | Status |
-|------|-------------|---------|--------|
-| [EP-001](ep-001-authentication.md) | Authentication & Onboarding | | 📝 Draft |
-| [EP-002](ep-002-core-features.md) | Core Features | | 📝 Draft |
-| [EP-003](ep-003-payment.md) | Payment & Transactions | | 📝 Draft |
-| [EP-004](ep-004-communication.md) | Communication & Notifications | | 📝 Draft |
-| [EP-005](ep-005-admin.md) | Admin & Management | | 📝 Draft |
+| Epic | Description | Status |
+| :--- | :--- | :--- |
+| [EP-001: Authentication & Onboarding](ep-001-authentication.md) | Login and Registration via OTP or Google | 📝 Draft |
+| [EP-002: Trip Planner & Capacity](ep-002-trip-planner.md) | Trip creation, Traveler Profiles, baggage slots capacity controls | 📝 Draft |
+| [EP-003: Product Request Form](ep-003-product-request.md) | Structured item request templates for shoppers | 📝 Draft |
+| [EP-004: Quotation & Expiry](ep-004-quotation.md) | Price quoting engine, 24h auto-expiry rules | 📝 Draft |
+| [EP-005: Order & Admin Management](ep-005-order-management.md) | 8-state tracking, reviews system, admin overview dashboard | 📝 Draft |
+| [EP-006: Escrow Integration](ep-006-escrow-payment.md) | Virtual Account / E-Wallet payments and payouts | 📝 Draft |
 
 ---
 
