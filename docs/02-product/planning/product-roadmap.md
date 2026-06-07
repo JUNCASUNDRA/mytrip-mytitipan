@@ -8,45 +8,51 @@ This roadmap aligns engineering effort with the Go-To-Market strategy, focusing 
 ## Month 1: Foundation & Supply Core
 **Goal:** Build the tools for Travelers to publish trips and Shoppers to request items.
 
-* **Tech:** Auth setup, Database schema, Cloud infrastructure.
+* **Tech:** Auth setup (OTP / Google), Database schema, Cloud infrastructure.
 * **Product:**
   * Trip Publisher (URL Generation).
-  * Structured Request Form.
-  * Basic Manual Admin Dashboard (for transaction and trip overview).
+  * Traveler Profile (displaying name, photo, reviews, and completed counts).
+  * Product Request Form.
+  * Admin Dashboard (basic transaction and trip overview).
 
-## Month 2: Transaction & Escrow Engine
+## Month 2: Transaction Engine
 **Goal:** Enable secure matching and payment.
 
 * **Tech:** Payment Gateway Integration (Escrow holding logic).
 * **Product:**
-  * Quotation Engine (Traveler sending quote to Shopper).
+  * Quotation Engine.
+  * Capacity Management (baggage slot tracking, capacity reservation).
+  * Quote Expiry (24-hour auto-release of reserved capacity).
+  * Escrow Integration.
   * Checkout Flow (Shopper funding Escrow).
 
-## Month 3: Fulfillment & Launch Preparation
+## Month 3: Fulfillment & Launch
 **Goal:** Complete the loop and launch the constrained MVP (Japan ↔ Indonesia route).
 
 * **Tech:** Payout logic (releasing funds to Traveler).
 * **Product:**
-  * 4-State Order Dashboard (Paid → Purchased → In Transit → Delivered).
-  * Basic Reviews & Ratings System (text reviews and star ratings).
-  * Final QA and Security Audit.
-* **Milestone:** **MVP Public Launch (Constrained to 50 subsidized Travelers)**.
+  * Order Tracking Dashboard (Requested → Quoted → Payment Pending → Paid → Purchased → In Transit → Delivered → Completed).
+  * Email Notifications (automated status updates).
+  * Reviews & Ratings System (text reviews and star ratings).
+  * QA & Security Audit.
+* **Milestone:** **MVP Public Launch (Constrained to 50 subsidized Travelers; Japan ↔ Indonesia route)**.
 
 ---
 
-## Month 4: The "Friction Reduction" Update (V1.1)
+## Month 4: Friction Reduction (V1.1)
 **Goal:** Listen to the first 100 transactions and reduce manual friction.
 
 * **Product:**
-  * Auto-Generated AWB (Logistics Integration).
-  * Automated Email/Push Notifications.
-  * Public Traveler Profiles (Completed trips & orders count).
+  * Push Notifications.
+  * Better Admin Reporting.
+  * Operational Tools.
 
-## Month 5-6: The "Liquidity & Discovery" Update (V2.0)
+## Month 5-6: Liquidity & Discovery (V2)
 **Goal:** Shift from link-based sharing to internal platform discovery.
 
 * **Product:**
   * Destination Discovery Feed (Browse active trips by city).
   * Creator Storefronts (Curated item lists).
-  * Traveler Identity Verification (Government ID / KYC submission and approval workflow).
+  * Traveler Identity Verification (KYC submission and approval workflow).
+  * Logistics Integration (Auto-Generated AWB for JNE/GoSend shipping labels).
 * **Milestone:** Expand routes to South Korea and Singapore.
