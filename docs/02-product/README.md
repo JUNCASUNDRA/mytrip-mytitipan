@@ -1,30 +1,43 @@
 # 📦 Product Documentation
 
-> Semua dokumen terkait product management, requirements, dan roadmap.
+## Purpose
+
+Defines the product vision, MVP scope boundaries, core user flows, and user stories/use cases to guide the development process.
+
+## Rules
+
+- **MVP Focus & Scope Creep Prevention:** All product specifications must comply with the strict MVP constraints (no in-app chat, no discovery feed, no complex KYC, etc.). Keep future feature ideas in a "Future Scope" section.
+- **MoSCoW Prioritization:** Strictly categorize features into Must-Have, Should-Have, Could-Have, and Won't-Have.
+- **User-Centric:** Align all user stories with the established User Personas and User Journeys.
+- **Clear Acceptance Criteria:** Every user story must feature measurable Acceptance Criteria (AC) with clear scenarios.
+
+---
 
 ## Document Index
 
 ### Strategy
 | # | Document | Status | Description |
 |---|----------|--------|-------------|
-| 1 | [Product Vision](strategy/product-vision.md) | 📝 Draft | Visi dan arah produk |
-| 2 | [User Persona](strategy/user-persona.md) | 📝 Draft | Profil target pengguna |
-| 3 | [User Segmentation](strategy/user-segmentation.md) | 📝 Draft | Segmentasi target pasar |
-| 4 | [User Journey](strategy/user-journey.md) | 📝 Draft | Perjalanan pengguna end-to-end |
+| 1 | [Product Vision](strategy/product-vision.md) | 📝 Draft | Vision and direction of the product |
+| 2 | [User Persona](strategy/user-persona.md) | 📝 Draft | User profiles of our target audience |
+| 3 | [User Segmentation](strategy/user-segmentation.md) | 📝 Draft | Market segmentation of target users |
+| 4 | [User Journey](strategy/user-journey.md) | 📝 Draft | End-to-end customer journey map |
 
 ### Planning
 | # | Document | Status | Description |
 |---|----------|--------|-------------|
-| 1 | [MVP Definition](planning/mvp-definition.md) | 📝 Draft | Definisi lingkup MVP |
-| 2 | [Feature Prioritization](planning/feature-prioritization.md) | 📝 Draft | Prioritas fitur |
-| 3 | [Core User Flow](planning/core-user-flow.md) | 📝 Draft | Flow utama interaksi pengguna |
-| 4 | [Product Roadmap](planning/product-roadmap.md) | 📝 Draft | Roadmap peluncuran dan rilis |
+| 1 | [MVP Definition](planning/mvp-definition.md) | 📝 Draft | Definition of MVP scope boundaries |
+| 2 | [Feature Prioritization](planning/feature-prioritization.md) | 📝 Draft | Feature prioritization list (MoSCoW) |
+| 3 | [Core User Flow](planning/core-user-flow.md) | 📝 Draft | Core transactional user interaction flows |
+| 4 | [Product Roadmap](planning/product-roadmap.md) | 📝 Draft | Product release and milestone roadmap |
 
 ### Requirements & Specifications
 | # | Document | Status | Description |
 |---|----------|--------|-------------|
-| 1 | [User Stories](user-stories/) | 📝 Draft | Kumpulan user stories per epic |
-| 2 | [Use Cases](use-cases/) | 📝 Draft | Use case specifications |
+| 1 | [User Stories](user-stories/) | 📝 Draft | Epics and user stories backlog |
+| 2 | [Use Cases](use-cases/) | 📝 Draft | Detailed use case specifications |
+
+---
 
 ## Reading Order
 
