@@ -17,7 +17,7 @@ predecessor: docs/03-design/user-flow/README.md
 
 ## 1. Executive Summary
 
-In this phase, the product requirements, user journeys, and core flows were successfully translated into a concrete, mobile-first **UX User Flow** mapping. The resulting artifact has been written to [docs/03-design/user-flow/README.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/README.md).
+In this phase, the product requirements, user journeys, and core flows were successfully translated into a concrete, mobile-first **UX User Flow** mapping. To support a clean multi-agent execution pipeline, the documentation has been split into 7 component-level files located under [docs/03-design/user-flow/](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/).
 
 This flow strictly adheres to the MVP constraints, omitting all V2 features (no in-app chat, no discovery feed, no KYC, no creator storefronts) and focuses on establishing the core escrow-based request-and-fulfillment transaction loop.
 
@@ -36,13 +36,14 @@ This flow strictly adheres to the MVP constraints, omitting all V2 features (no 
 
 ## 3. Deliverables Produced
 
-*   **User Flow Overview**: Defines roles and interactions of the **Traveler**, **Shopper**, and **Admin** actors.
-*   **Traveler User Flow**: Flowchart and detailed steps from trip creation and capacity sharing to domestic shipment and escrow payout.
-*   **Shopper User Flow**: Flowchart and detailed steps from shared link click to checkout, tracking, and review submission.
-*   **Admin User Flow**: Flowchart and steps for active trip oversight, transaction audits, and dispute/refund resolutions.
-*   **Screen Inventory**: Details 13 screens required for the MVP, including primary call-to-actions and navigation paths.
-*   **State Transitions**: Maps the database-friendly Request and Fulfillment lifecycles (Requested, Quoted, Payment Pending, Paid, Purchased, In Transit, Delivered, Completed) alongside Expiry and Cancellation paths.
-*   **UX Notes**: Outlines potential user confusion points, error states, empty states, and a required notification trigger matrix.
+All user flow assets have been modularized into specific files under `docs/03-design/user-flow/`:
+*   **[README.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/README.md)**: Main entry point mapping the actors and listing flow links.
+*   **[traveler-flow.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/traveler-flow.md)**: Maps the complete traveler flow, flowchart, and traveler-specific UX notes (e.g., out-of-pocket capital risk).
+*   **[shopper-flow.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/shopper-flow.md)**: Maps the complete shopper flow, flowchart, and shopper-specific UX notes (e.g., capacity reservation expiry).
+*   **[admin-flow.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/admin-flow.md)**: Maps administrative tools, flowchart, and manual escrow refund/release safeguards.
+*   **[order-lifecycle.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/order-lifecycle.md)**: Tracks detailed status transitions, triggers, and baggage capacity backend actions for the database design.
+*   **[screen-inventory.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/screen-inventory.md)**: Indexes all 13 screens with unique SCR IDs for future wireframe references.
+*   **[notifications.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/notifications.md)**: Matrix of transaction notification triggers, channels, and message copy.
 
 ---
 
