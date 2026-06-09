@@ -1,62 +1,36 @@
-# User Flow
-
-> Diagram alur interaksi pengguna di dalam aplikasi.
-
-## Naming Convention
-
-File: `[flow-name].md` atau `[flow-name].png`
-
-## Flows
-
-| Flow | Description | Status |
-|------|-------------|--------|
-| Registration Flow | Alur pendaftaran user baru | ⬜ Todo |
-| Login Flow | Alur login user | ⬜ Todo |
-| Search & Browse Flow | Alur pencarian traveler dan produk | 🚧 In Progress |
-| Request-to-Payment Flow | Alur dari Shopper buat request sampai bayar Escrow | ✅ Defined |
-| Trip-to-Fulfillment Flow | Alur Traveler buat trip sampai kirim barang | ✅ Defined |
-| Profile & Reputation Flow | Alur manajemen profil dan sistem badge | ⬜ Todo |
-
-## Core Flow: Shopper Request-to-Payment
-
-```mermaid
-sequenceDiagram
-    participant S as Shopper
-    participant P as Platform
-    participant T as Traveler
-
-    S->>P: Browse Feed/Search Trip
-    P-->>S: Display Verified Travelers
-    S->>P: Fill Request Form (Item, Budget)
-    P->>T: Notify New Request
-    T->>P: Send Final Quote (Price + Fee + Shipping)
-    P->>S: Notify Quote Received
-    S->>P: Approve & Pay via Payment Gateway
-    P->>P: Lock Funds in Escrow
-    P->>T: Notify: Payment Secured, Start Purchasing
-```
-
-## Core Flow: Traveler Trip-to-Fulfillment
-
-```mermaid
-sequenceDiagram
-    participant T as Traveler
-    participant P as Platform
-    participant S as Shopper
-
-    T->>P: Create Trip (Destination, Dates)
-    P->>S: Notify Followers / Update Feed
-    T->>T: Purchase Items at Destination
-    T->>P: Upload Proof of Purchase (Receipt/Photo)
-    P->>S: Update Status to "Purchased"
-    T->>P: Generate Shipping Label (Return to ID)
-    T->>P: Input Tracking Number
-    P->>S: Update Status to "Shipped"
-    S->>P: Confirm Delivery
-    P->>T: Release Funds to Wallet
-```
-
+---
+agent: UX Designer Agent (UXA)
+version: 1.0.0
+date: 2026-06-09
+status: Draft
+predecessor: docs/02-product/planning/core-user-flow.md
 ---
 
-> **Input dari**: [User Journey](../../02-product/user-journey.md), [User Persona](../../02-product/user-persona.md)
-> **Output ke**: [Wireframes](../wireframes/), [Sequence Diagrams](../../04-technical/sequence-diagrams/)
+# User Flow
+
+This directory contains the modularized UX user flows for the **My Trip My Titipan** MVP. The documentation is split into separate files to help developers and system architects read specific sections without parsing a single monolithic document.
+
+## Actors
+
+*   **Traveler**: The supply provider who publishes trips to share baggage capacity, reviews shopper requests, issues quotes, purchases items abroad using their own funds, ships them domestically, and receives the escrow payout.
+*   **Shopper**: The demand creator who visits traveler trip pages, requests products, completes escrow payments, tracks order fulfillment, and reviews travelers.
+*   **Admin**: The platform operator who oversees active trips and transactions, resolves escrow disputes, and processes manual refund/payout actions.
+
+## Flow Map
+
+Click the links below to view the specific flows and inventories:
+
+1.  **[Traveler Flow](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/traveler-flow.md)**: Maps the complete traveler lifecycle from trip setup to final wallet payout.
+2.  **[Shopper Flow](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/shopper-flow.md)**: Maps the shopper experience from finding a trip link to checkout and delivery confirmation.
+3.  **[Admin Flow](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/admin-flow.md)**: Maps administrative audit capabilities and dispute resolution actions.
+4.  **[Order Lifecycle](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/order-lifecycle.md)**: Focuses on backend-facing order state transitions, database triggers, and pre-payment vs. post-payment lifecycles.
+5.  **[Screen Inventory](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/screen-inventory.md)**: Lists all 13 screens required for the MVP with unique Screen IDs for wireframe mapping.
+6.  **[Notifications Map](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/notifications.md)**: Documents the transactional notification triggers, recipient targets, channels, and message templates.
+7.  **[Exception and Dispute Flows](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/exception-flows.md)**: Details the step-by-step UX flows, triggers, and mechanics for handling cancellations, out-of-stock items, and escrow disputes.
+
+## References
+
+*   [Core User Flow](file:///d:/mytrip-mytitipan/docs/02-product/planning/core-user-flow.md)
+*   [User Journeys](file:///d:/mytrip-mytitipan/docs/02-product/strategy/user-journey.md)
+*   [MVP Definition](file:///d:/mytrip-mytitipan/docs/02-product/planning/mvp-definition.md)
+*   [Feature Prioritization](file:///d:/mytrip-mytitipan/docs/02-product/planning/feature-prioritization.md)
