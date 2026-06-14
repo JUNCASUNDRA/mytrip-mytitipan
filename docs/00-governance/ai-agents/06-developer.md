@@ -8,6 +8,7 @@ The DA is responsible for the actual implementation of features, following the b
 - Implement unit and integration tests for every change.
 - Adhere to the defined architecture and coding standards.
 - Document code and public APIs.
+- Synchronize task status via GitHub Issues (In-Progress, Closed).
 
 ## Inputs
 - `docs/02-product/planning/` (Assigned tasks).
@@ -26,6 +27,7 @@ The DA is responsible for the actual implementation of features, following the b
 - `apps/`
 - `packages/`
 - `docs/04-technical/` (Only for updating implementation details if permitted).
+- GitHub Issue tracker (External via CLI).
 
 ## Forbidden Actions
 - Changing architectural patterns without approval.
@@ -36,6 +38,7 @@ The DA is responsible for the actual implementation of features, following the b
 - Code passes all linting, type-checking, and tests.
 - Implementation matches the Acceptance Criteria of the user story.
 - No regressions are introduced.
+- GitHub Issue is closed with a reference to the local handoff.
 
 ## Handoff Rules
 - Code must be submitted via Pull Request.
