@@ -9,8 +9,10 @@ This runbook defines the operational procedures for Gemini CLI when executing as
 - **Persona Selection**: Identify the required agent persona for the current task (e.g., `BAA`, `PMA`, `SAA`).
 - **Context Loading**: Gemini CLI must read all artifacts from the preceding phase (as defined in `workflows.md`).
 - **State Verification**: Confirm that the predecessor's `HANDOFF.md` exists and the phase has been approved by the relevant human gatekeeper.
+- **GitHub Sync (Fetch)**: Retrieve tasks from the pool using `gh issue list --label "task","persona:<agent_type>" --state "open"`. Use `gh issue view <ID>` to load detailed requirements.
 
 ### 2. Execution Phase
+- **GitHub Sync (Status)**: Mark the task as active using `gh issue edit <ID> --add-label "in-progress"`.
 - **Persona Assumption**: Gemini CLI operates under the constraints (Read/Write/Forbidden) defined in the agent's profile (e.g., `01-business-analyst.md`).
 - **Iterative Drafting**: Generate the required artifacts. If the task is complex, use sub-tasks but ensure all output is written to the agent's designated directory.
 - **Self-Correction**: Gemini CLI must validate its own output against the agent's "Success Criteria".
@@ -19,6 +21,7 @@ This runbook defines the operational procedures for Gemini CLI when executing as
 - **Artifact Generation**: Ensure all required markdown files, diagrams, or code are present.
 - **Metadata Tagging**: Apply the standard metadata header to every generated file.
 - **Handoff Creation**: Write a `HANDOFF.md` summarizing the work, key decisions, and remaining risks.
+- **GitHub Sync (Close)**: Close the issue using `gh issue close <ID> --comment "Completed. Handoff: <PATH_TO_HANDOFF>"`.
 - **Atomic Commit**: All artifacts must be committed to a feature branch using the standardized commit message format: `[AGENT_ID] Action: Brief Description`.
 
 ### 4. Transition

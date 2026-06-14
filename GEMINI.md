@@ -176,7 +176,20 @@ Any change (regardless of size) touching the following domains automatically esc
 
 ---
 
-## 14. Future Scalability Guidance
+## 15. GitHub Integration Protocol (Automation)
+
+To ensure transparency and real-time tracking, all agents must synchronize their state with GitHub Issues/Projects using the `gh` CLI.
+
+1. **Task Creation (TPA):** Every technical task must be created as a GitHub Issue with the label `task` and a mandatory persona label (e.g., `persona:developer`, `persona:product`, `persona:architect`). Tasks are left **unassigned** to act as a general "Task Pool".
+2. **State Synchronization:**
+   - **Start:** When an agent begins a task, it must add the `in-progress` label. This acts as a "claim" on the task.
+   - **Completion:** Upon successful validation and handoff, the agent must close the issue with a reference to the local `HANDOFF.md`.
+3. **Traceability:** Every GitHub Issue must contain a link to the corresponding Product Requirement (PRD) or Technical Design (ADR).
+4. **Project Boards:** Issues must be automatically added to the "MyTrip - Development" Project Board in the appropriate column (Todo, In Progress, Done).
+
+---
+
+## 16. Future Scalability Guidance
 
 As MyTrip - MyTitipan evolves into complex financial services:
 * **Prefer specialized RA modes** (e.g., `Dispute Audit Mode`, `Billing Reconciliation Mode`) over new agents.

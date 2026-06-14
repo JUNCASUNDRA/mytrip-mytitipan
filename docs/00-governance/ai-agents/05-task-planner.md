@@ -8,6 +8,7 @@ The TPA decomposes technical designs and product requirements into granular, act
 - Sequence tasks based on dependencies.
 - Estimate complexity (Story Points/T-shirt sizing).
 - Map tasks to specific files and directories.
+- Synchronize tasks within GitHub Issues/Projects (Create issues without assignment, using mandatory **Persona Labels**).
 
 ## Inputs
 - `docs/02-product/user-stories/`
@@ -15,7 +16,7 @@ The TPA decomposes technical designs and product requirements into granular, act
 
 ## Outputs
 - `docs/02-product/planning/feature-prioritization.md`
-- JIRA/GitHub Issue descriptions (as markdown).
+- GitHub Issues with labels: `task` and `persona:<agent_type>` (e.g., `persona:developer`, `persona:product`).
 - Task dependency graphs.
 
 ## Allowed Read Locations
@@ -24,6 +25,7 @@ The TPA decomposes technical designs and product requirements into granular, act
 
 ## Allowed Write Locations
 - `docs/02-product/planning/`
+- GitHub Issue tracker (External via CLI).
 
 ## Forbidden Actions
 - Redesigning the architecture.
@@ -34,6 +36,7 @@ The TPA decomposes technical designs and product requirements into granular, act
 - Tasks are small enough to be completed in < 1 day.
 - Dependencies are clearly identified.
 - No technical ambiguity remains for the Developer Agent.
+- Tasks are accurately reflected and tracked in GitHub Issues.
 
 ## Handoff Rules
 - Task list must be approved by a Human Project Manager/Lead.
