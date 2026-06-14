@@ -27,9 +27,12 @@ The UX user flows have been updated and validated to align with the latest **PMA
 
 ---
 
-## 2. Screens Created (Screen Inventory & Wireframes)
+## 2. Screens Created (Screen Inventory)
 
-Low-fidelity text wireframe layouts have been defined for all 13 screens in the inventory, removing out-of-scope feed exploration interfaces to enforce link-only sharing constraints:
+*   **[wireframes/](wireframes/)**: Restructured to house 13 detailed screen layout specs:
+    - [scr-001-login.md](wireframes/scr-001-login.md) through [scr-013-admin-dispute.md](wireframes/scr-013-admin-dispute.md).
+    - [README.md](wireframes/README.md) [UPDATED]: Centralized dashboard indexing the spec files, with all out-of-scope Home Feed screens removed.
+    - Embedded 6 visual PNG mockups directly inside key screen specs (`SCR-002`, `SCR-003`, `SCR-004`, `SCR-005`, `SCR-006`, and `SCR-010`).
 
 *   **[SCR-001: Login / Register](wireframes/README.md#scr-001-login--register)**: Mobile authentication view via Google SSO or Email-OTP.
 *   **[SCR-002: Trip Landing Page](wireframes/README.md#scr-002-trip-landing-page)**: Publicly accessible trust screen with dates, routes, baggage weight bars, and active request CTA.
