@@ -1,3 +1,11 @@
+---
+agent: Product Manager Agent (PMA)
+version: 1.1.0
+date: 2026-06-14
+status: Draft
+predecessor: docs/02-product/planning/core-user-flow.md
+---
+
 # Use Case Specifications
 
 This document outlines the formal Use Case Diagram Specification, Detailed Use Case Specifications, and the Traceability Matrix for the **My Trip My Titipan** MVP.
@@ -18,10 +26,12 @@ This document outlines the formal Use Case Diagram Specification, Detailed Use C
 
 ### Domain: Order & Quotation Management
 * **UC-005: Create & Send Quotation**
-  * *Description:* Allows a traveler to review a product request and respond with a detailed pricing quote (Item Price + Jastip Fee).
+  * *Description:* Allows a traveler to review a request, accept it, and send a quotation.
   * *Relationships:* Includes *UC-006: Reserve Baggage Capacity*.
 * **UC-009: Ship & Deliver Item**
-  * *Description:* Allows a traveler to ship a purchased item to the shopper domestically via JNE/GoSend and input the tracking number.
+  * *Description:* Allows a traveler to ship a purchased item to the shopper domestically and input the tracking details.
+* **UC-016: Procure & Purchase Item**
+  * *Description:* Allows a traveler to transition an order to "Purchasing" when starting procurement, and to "Purchased" (with optional receipt/photo upload) upon buying the item.
 
 ### Domain: Trip Completion & Payout
 * **UC-015: Complete Trip**
@@ -71,9 +81,9 @@ This document outlines the formal Use Case Diagram Specification, Detailed Use C
 * **UC-006: Manage Baggage Capacity (Reserve & Lock)**
   * *Description:* Automates temporary baggage weight reservation when a quote is created, and confirms the capacity lock when payment is completed.
 * **UC-013: Auto-Expire Quote & Release Capacity**
-  * *Description:* Automatically expires unpaid quotes after 24 hours, releasing the reserved capacity back to the traveler's trip.
-* **UC-014: Send Email Notification**
-  * *Description:* Automatically sends status update emails to shoppers and travelers when milestones are met (new request, quote sent, payment received, order shipped).
+  * *Description:* Automatically expires unpaid quotes after 24 hours or upon payment gateway failure/expiry, releasing the reserved capacity.
+* **UC-014: Send Notification**
+  * *Description:* Automatically sends status updates to shoppers and travelers when milestones are met.
 
 ---
 
@@ -140,7 +150,7 @@ This document outlines the formal Use Case Diagram Specification, Detailed Use C
   2. System validates that required fields are filled.
   3. Shopper submits request.
   4. System registers order in state "Requested".
-  5. System triggers *UC-014: Send Email Notification* to the Traveler.
+  5. System triggers *UC-014: Send Notification* to the Traveler.
 * **Alternate Flow:**
   * *User not logged in:* System redirects shopper to UC-001 (Register & Login) before saving request details.
 * **Postconditions:** Request is saved; order status is "Requested".
@@ -153,28 +163,33 @@ This document outlines the formal Use Case Diagram Specification, Detailed Use C
 * **Preconditions:** Order status is "Requested"; traveler is logged in.
 * **Trigger:** Traveler opens a request on their dashboard.
 * **Main Flow:**
-  1. Traveler inputs: Item Price, Jastip Fee, and estimated weight/slots.
-  2. Traveler clicks "Send Quote".
-  3. System triggers *UC-006: Manage Baggage Capacity (Reserve)*.
-  4. Quote status changes to "Quoted" and transaction state to "Payment Pending".
-  5. System triggers *UC-014: Send Email Notification* to the Shopper with a 24-hour payment deadline link.
+  1. Traveler reviews request.
+  2. Traveler accepts request.
+  3. System creates quotation.
+  4. Traveler inputs: Item Price, Jastip Fee, and estimated weight/slots.
+  5. Traveler clicks "Send Quote".
+  6. Status changes to "Quoted".
+  7. System triggers *UC-006: Manage Baggage Capacity (Reserve)*.
+  8. System triggers *UC-014: Send Notification* to the Shopper with a 24-hour payment link.
 * **Alternate Flow:**
   * *Traveler Rejects Request:* Traveler clicks "Decline Request". Status changes to "Cancelled" and shopper is notified.
-* **Postconditions:** Quotation is sent; baggage capacity is reserved for 24 hours.
+* **Postconditions:** Quotation is sent; baggage capacity is reserved.
 
 ### UC-006: Manage Baggage Capacity (Reserve & Lock)
 * **Use Case ID:** UC-006
 * **Use Case Name:** Manage Baggage Capacity (Reserve & Lock)
 * **Primary Actor:** System
 * **Goal:** Track and lock baggage capacity to prevent overbooking.
-* **Preconditions:** A quote is sent or payment is made.
-* **Trigger:** Quote is sent (Reserve) OR Payment is completed (Lock).
+* **Preconditions:** A quote is sent, payment is made, or payment is cancelled/expired.
+* **Trigger:** Quote is sent (Reserve) OR Payment is completed (Lock) OR Expiry/Cancellation occurs (Release).
 * **Main Flow (Reservation):**
   1. System checks remaining trip capacity.
   2. If sufficient, system temporarily deducts item weight/slots from "available capacity" and adds it to "reserved capacity".
 * **Main Flow (Locking):**
   1. Upon successful checkout, system converts "reserved capacity" to "locked capacity".
   2. If trip capacity reaches zero, system automatically changes Trip status to "Full" and disables new request submissions.
+* **Main Flow (Release):**
+  1. Upon quotation expiry, payment failure, or cancellation, system deducts estimated weight from "reserved capacity" and adds it back to "available capacity".
 * **Postconditions:** Baggage capacity calculations are updated.
 
 ### UC-007: Pay via Escrow
@@ -182,19 +197,20 @@ This document outlines the formal Use Case Diagram Specification, Detailed Use C
 * **Use Case Name:** Pay via Escrow
 * **Primary Actor:** Shopper
 * **Goal:** Securely fund the transaction into escrow to authorize purchase.
-* **Preconditions:** Order status is "Payment Pending"; payment window has not expired.
-* **Trigger:** Shopper clicks "Accept & Pay" on quote.
+* **Preconditions:** Order status is "Quoted" or "Payment Pending".
+* **Trigger:** Shopper clicks "Pay Now" on quote.
 * **Main Flow:**
-  1. System redirects shopper to payment page showing payment options (Virtual Account / E-Wallet).
-  2. Shopper completes checkout within payment gateway widget.
-  3. Payment gateway sends payment webhook notification to platform.
-  4. System locks funds in Escrow account.
-  5. System triggers *UC-006: Manage Baggage Capacity (Lock)*.
-  6. Status changes to "Paid".
-  7. System triggers *UC-014: Send Email Notification* to the Traveler indicating it is safe to buy.
+  1. Shopper clicks "Pay Now". Order status transitions to "Payment Pending".
+  2. System redirects shopper to payment page and creates a transaction on the payment gateway (status: Created/Pending).
+  3. Shopper completes checkout within payment gateway widget.
+  4. Payment gateway sends payment webhook notification (Success) to platform.
+  5. System locks funds in Escrow account.
+  6. System triggers *UC-006: Manage Baggage Capacity (Lock)*.
+  7. Status changes to "Paid".
+  8. System triggers *UC-014: Send Notification* to the Traveler indicating it is safe to proceed with procurement.
 * **Alternate Flow:**
-  * *Payment Fails/Timeout:* If shopper cancels checkout or fails to pay, order remains in "Payment Pending" until system triggers UC-013 (Auto-Expiry).
-* **Postconditions:** Escrow is funded; status changes to "Paid".
+  * *Payment Fails/Expires:* If the payment gateway sends a Failed/Expired callback, or the 24-hour payment window closes, status transitions directly to "Expired" and system triggers capacity release.
+* **Postconditions:** Escrow is funded; status changes to "Paid" (or "Expired" on failure).
 
 ### UC-008: Track Order Status
 * **Use Case ID:** UC-008
@@ -216,10 +232,10 @@ This document outlines the formal Use Case Diagram Specification, Detailed Use C
 * **Preconditions:** Order status is "Purchased"; traveler has returned.
 * **Trigger:** Traveler drops package at courier and inputs tracking details.
 * **Main Flow:**
-  1. Traveler inputs domestic tracking number (e.g. JNE) into the platform order dashboard.
+  1. Traveler inputs domestic tracking number into the platform order dashboard.
   2. Traveler clicks "Mark as Shipped".
   3. Status changes to "In Transit".
-  4. System triggers *UC-014: Send Email Notification* to Shopper with tracking details.
+  4. System triggers *UC-014: Send Notification* to Shopper with tracking details.
 * **Postconditions:** Status is "In Transit".
 
 ### UC-010: Confirm Delivery
@@ -232,7 +248,7 @@ This document outlines the formal Use Case Diagram Specification, Detailed Use C
 * **Main Flow:**
   1. Shopper clicks "Confirm Receipt".
   2. System changes status to "Delivered".
-  3. System initiates escrow payout to traveler (payout logic).
+  3. System initiates escrow payout to traveler.
   4. Status changes to "Completed".
   5. System triggers *UC-011: Submit Review & Rating* (Extend).
 * **Postconditions:** Escrow funds are released; order is "Completed".
@@ -267,28 +283,42 @@ This document outlines the formal Use Case Diagram Specification, Detailed Use C
 * **Use Case ID:** UC-013
 * **Use Case Name:** Auto-Expire Quote & Release Capacity
 * **Primary Actor:** System
-* **Goal:** Release capacity reserved by non-responsive shoppers.
-* **Preconditions:** Order status is "Payment Pending".
-* **Trigger:** System cron worker detects quotation created > 24 hours ago without payment.
+* **Goal:** Release capacity reserved by non-responsive shoppers or failed checkouts.
+* **Preconditions:** Order status is "Quoted" or "Payment Pending".
+* **Trigger:** System cron worker detects quotation created > 24 hours ago without payment OR gateway webhook reports failed/expired payment.
 * **Main Flow:**
-  1. Cron identifies expired quotation.
+  1. Cron or Webhook identifies expired/failed quotation.
   2. System cancels quote, setting order status to "Expired".
   3. System triggers capacity release: deducts estimated weight from "reserved capacity" and adds it back to "available capacity".
-  4. System triggers *UC-014: Send Email Notification* to both parties notifying them of expiration.
+  4. System triggers *UC-014: Send Notification* to both parties.
 * **Postconditions:** Status is "Expired"; capacity is released.
 
-### UC-014: Send Email Notification
+### UC-014: Send Notification
 * **Use Case ID:** UC-014
-* **Use Case Name:** Send Email Notification
+* **Use Case Name:** Send Notification
 * **Primary Actor:** System
 * **Goal:** Notify users of important order lifecycle events.
 * **Preconditions:** System event is triggered.
-* **Trigger:** Status changes (Requested, Quoted, Paid, In Transit, Delivered, Completed, Expired).
+* **Trigger:** Status changes (Requested, Quoted, Payment Pending, Paid, Purchasing, Purchased, In Transit, Delivered, Completed, Expired, Cancelled, Refunded).
 * **Main Flow:**
-  1. System fetches user email matching target role.
-  2. System compiles email template with order metadata.
-  3. System sends email via SMTP gateway.
-* **Postconditions:** Email is sent successfully.
+  1. System fetches user communication channels matching target role.
+  2. System compiles notification template with order metadata.
+  3. System dispatches notification (email, push, or in-app).
+* **Postconditions:** Notification is sent.
+
+### UC-016: Procure & Purchase Item
+* **Use Case ID:** UC-016
+* **Use Case Name:** Procure & Purchase Item
+* **Primary Actor:** Traveler
+* **Goal:** Procure requested items and verify the purchase to build trust.
+* **Preconditions:** Order status is "Paid".
+* **Trigger:** Traveler travels/begins procurement OR traveler successfully buys the item.
+* **Main Flow:**
+  1. Traveler begins procurement process. Status changes to "Purchasing".
+  2. Traveler successfully purchases the item.
+  3. Traveler navigates to dashboard and clicks "Mark as Purchased", with the option to upload a receipt image or product photo.
+  4. Status changes to "Purchased".
+* **Postconditions:** Status is "Purchased".
 
 ### UC-015: Complete Trip
 * **Use Case ID:** UC-015
@@ -319,9 +349,10 @@ The table below maps the **Product Vision** strategic objectives to the **MVP Fe
 | **Overbooking Prevention** | 6. Quote Expiry & Capacity Release | **UC-013**: Auto-Expire Quote & Release Capacity | `US-004-002` |
 | **Fraud Risk Elimination (Escrow)** | 7. Escrow Payment Integration | **UC-007**: Pay via Escrow | `US-006-001` |
 | **Peer-to-Peer Transparency** | 8. Order Tracking | **UC-008**: Track Order Status | `US-005-001` |
+| **Peer-to-Peer Transparency** | 8. Order Tracking (Purchase) | **UC-016**: Procure & Purchase Item | `US-005-005` |
 | **Invisible Trust Infrastructure** | 8. Order Tracking (Payout) | **UC-010**: Confirm Delivery | `US-005-002` |
 | **Verification & Trust Loop (P2P)** | 9. Reviews & Ratings | **UC-011**: Submit Review & Rating | `US-005-003` |
 | **Operational & Admin Controls** | 10. Admin Dashboard | **UC-012**: Monitor Transactions & Trips | `US-005-004` |
-| **Transactional Updates** | 11. Email Notifications | **UC-014**: Send Email Notification | `US-004-003` |
+| **Transactional Updates** | 11. Notifications | **UC-014**: Send Notification | `US-004-003` |
 | **Supply Creation (Suitcase Inventory)** | 1. Trip Publisher | **UC-002**: Publish Trip | `US-002-001` |
 | **Onboarding & Access** | Authentication | **UC-001**: Register & Login | `US-001-001`, `US-001-002` |

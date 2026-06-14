@@ -1,7 +1,15 @@
+---
+agent: Product Manager Agent (PMA)
+version: 1.1.0
+date: 2026-06-14
+status: Draft
+predecessor: docs/02-product/strategy/product-vision.md
+---
+
 # MVP Definition
 
 > **Status**: 📝 Draft
-> **Last Updated**: 2026-06-06
+> **Last Updated**: 2026-06-14
 
 This document defines the strict Minimum Viable Product (MVP) for My Trip My Titipan. We are constrained by a 3-month launch window and a 3–5 person engineering team.
 
@@ -105,6 +113,7 @@ The platform tracks order progress through the following statuses:
 * Quoted
 * Payment Pending
 * Paid
+* Purchasing
 * Purchased
 * In Transit
 * Delivered

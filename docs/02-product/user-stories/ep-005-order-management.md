@@ -1,3 +1,11 @@
+---
+agent: Product Manager Agent (PMA)
+version: 1.1.0
+date: 2026-06-14
+status: Draft
+predecessor: docs/02-product/planning/core-user-flow.md
+---
+
 # Epic 005: Order & Admin Management
 
 > **Status**: 📝 Draft
@@ -28,6 +36,7 @@ Scenario: View order tracking history
     | Quoted | Yes | Traveler sent quote |
     | Payment Pending | Yes | Checkout is open (24h window) |
     | Paid | Yes | Escrow funded by shopper |
+    | Purchasing | Yes | Traveler is procurement processing |
     | Purchased | Yes | Traveler bought item abroad |
     | In Transit | Yes | Domestic tracking number exists |
     | Delivered | Yes | Shopper confirmed receipt |
@@ -125,5 +134,35 @@ Scenario: Admin accesses dashboard summary
 
 ---
 
-> **Total Story Points**: 20
-> **Related Use Cases**: [UC-008](use-cases/use-case-specifications.md#uc-008-track-order-status), [UC-010](use-cases/use-case-specifications.md#uc-010-confirm-delivery), [UC-011](use-cases/use-case-specifications.md#uc-011-submit-review--rating), [UC-012](use-cases/use-case-specifications.md#uc-012-monitor-transactions--trips)
+## US-005-005: Procure & Purchase Item
+
+**As a** Traveler,
+**I want to** update my order status when I start procurement and upload optional receipts/photos when the item is purchased,
+**So that** the shopper is kept informed and trusts the purchase validity.
+
+| Attribute | Value |
+|-----------|-------|
+| Priority | Must Have |
+| Story Points | 5 |
+
+### Acceptance Criteria
+
+```gherkin
+Scenario: Start procurement transitions status to Purchasing
+  Given I am logged in as a Traveler
+  And my order status is "Paid"
+  When I click "Start Purchasing"
+  Then the order status should change to "Purchasing"
+
+Scenario: Mark purchased with optional receipt upload
+  Given my order status is "Purchasing"
+  And I am logged in as the Traveler
+  When I upload a photo of the receipt or item (optional)
+  And I click "Mark as Purchased"
+  Then the order status should change to "Purchased"
+```
+
+---
+
+> **Total Story Points**: 25
+> **Related Use Cases**: [UC-008](use-cases/use-case-specifications.md#uc-008-track-order-status), [UC-010](use-cases/use-case-specifications.md#uc-010-confirm-delivery), [UC-011](use-cases/use-case-specifications.md#uc-011-submit-review--rating), [UC-012](use-cases/use-case-specifications.md#uc-012-monitor-transactions--trips), [UC-016](use-cases/use-case-specifications.md#uc-016-procure-&--purchase-item)

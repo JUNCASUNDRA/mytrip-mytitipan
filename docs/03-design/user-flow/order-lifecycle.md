@@ -1,9 +1,9 @@
 ---
-agent: UX Designer Agent (UXA)
-version: 1.0.0
-date: 2026-06-09
+agent: Product Manager Agent (PMA)
+version: 1.1.0
+date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/user-flow/README.md
+predecessor: docs/02-product/planning/core-user-flow.md
 ---
 
 # Order Lifecycle
@@ -21,13 +21,15 @@ The following table maps the state transitions for the MVP order engine:
 | **Requested** | Request | Shopper submitted a product request. | Shopper clicks "Submit Request" | `Quoted`, `Cancelled` | None |
 | **Quoted** | Request | Traveler has sent a quote. | Traveler sends quote details | `Payment Pending`, `Cancelled`, `Expired` | **Reserve capacity** (Starts 24h timer) |
 | **Payment Pending** | Request | Shopper is in the checkout portal. | Shopper clicks "Pay Now" | `Paid`, `Expired` | Keep reserved |
-| **Paid** | Fulfillment | Payment is confirmed. Escrow is funded. | Gateway webhook (success) | `Purchased`, `Cancelled` | **Confirm Lock** (Lock baggage slot) |
-| **Purchased** | Fulfillment | Traveler bought the item abroad. | Traveler clicks "Mark Purchased"| `In Transit` | Locked |
+| **Paid** | Fulfillment | Payment is confirmed. Escrow is funded. | Gateway webhook (success) | `Purchasing`, `Cancelled`, `Refunded` | **Confirm Lock** (Lock baggage slot) |
+| **Purchasing** | Fulfillment | Traveler has started procurement/travel. | Traveler starts procurement | `Purchased`, `Cancelled`, `Refunded` | Locked |
+| **Purchased** | Fulfillment | Traveler bought the item abroad. | Traveler marks as Purchased (optional receipt upload) | `In Transit`, `Refunded` | Locked |
 | **In Transit** | Fulfillment | Traveler shipped the package domestically. | Traveler inputs tracking AWB | `Delivered`, `Completed` | Locked |
-| **Delivered** | Fulfillment | Shopper confirmed package receipt. | Shopper clicks "Confirm Receipt"| `Completed` | Released (Trip completed) |
+| **Delivered** | Fulfillment | Shopper confirmed package receipt. | Shopper clicks "Confirm Receipt" | `Completed` | Released (Trip completed) |
 | **Completed** | Fulfillment | Escrow released to traveler wallet. | Auto-release or manual release | None (Final State) | Released (Trip completed) |
-| **Expired** | Request | Quote or payment window closed. | 24-hour expiry timer triggers | None (Final State) | **Release capacity** (Restore baggage slots) |
-| **Cancelled** | Both | Request rejected or custom refund. | Traveler decline / Admin refund | None (Final State) | **Release capacity** / Unlock baggage slots |
+| **Expired** | Request | Quote or payment window closed. | 24-hour expiry timer triggers OR gateway webhook failure | None (Final State) | **Release capacity** (Restore baggage slots) |
+| **Cancelled** | Both | Request rejected or manual cancel. | Traveler decline / Admin override | None (Final State) | **Release capacity** / Unlock baggage slots |
+| **Refunded** | Exception | Payment returned to shopper. | Admin triggers escrow refund | None (Final State) | **Release capacity** / Unlock baggage slots |
 
 ---
 
@@ -47,12 +49,18 @@ stateDiagram-v2
     Quoted --> Cancelled : Shopper Rejects / Traveler Cancels
     
     PaymentPending --> Paid : Payment Success (Capacity Locked)
-    PaymentPending --> Expired : 24h Expiry Timeout (Capacity Released)
+    PaymentPending --> Expired : Payment Failed / Expired or Timeout (Capacity Released)
     
-    Paid --> Purchased : Traveler Marks "Purchased"
-    Paid --> Cancelled : Traveler Out of Stock (Refund via Admin)
+    Paid --> Purchasing : Traveler Starts Procurement
+    Paid --> Cancelled : Traveler Declines / Out of Stock (Pre-Fulfillment)
+    Paid --> Refunded : Admin Processed Refund
+    
+    Purchasing --> Purchased : Traveler Marks "Purchased" (Optional Receipt)
+    Purchasing --> Cancelled : Out of Stock / Incident
+    Purchasing --> Refunded : Admin Processed Refund
     
     Purchased --> InTransit : Traveler Inputs Tracking Number
+    Purchased --> Refunded : Admin Processed Refund (Dispute)
     
     InTransit --> Delivered : Shopper Confirms Receipt
     InTransit --> Completed : 7-Day Auto-Release System Trigger
@@ -61,6 +69,7 @@ stateDiagram-v2
     
     Cancelled --> [*]
     Expired --> [*]
+    Refunded --> [*]
     Completed --> [*]
 ```
 
@@ -68,6 +77,6 @@ stateDiagram-v2
 
 ## 3. Capacity & Expiry Business Rules
 
-1.  **24-Hour Expiry Window**: The transition from `Quoted` or `Payment Pending` to `Expired` is managed by an automated cron job/timer. Once the timestamp exceeds `created_at + 24 hours`, the order state is updated to `Expired`, and the reserved weight is restored to the traveler's active trip.
+1.  **24-Hour Expiry Window / Failed Checkouts**: The transition from `Quoted` or `Payment Pending` to `Expired` is managed by either an automated cron job/timer or an immediate callback from the payment gateway. Once the timer triggers or gateway reports failure/expiry, the order state is updated to `Expired`, and the reserved weight is restored to the traveler's active trip.
 2.  **Double Booking Protection**: The system check validates that `trip.available_capacity >= request.estimated_weight` before allowing the traveler to issue a quote.
-3.  **Cancellation Post-Payment**: Once an order reaches `Paid`, standard cancellations are disabled. In case of extreme events (e.g., traveler cannot find the item, customs confiscation), the case must be escalated to the Admin to trigger a manual `Cancelled` state, returning the escrow money to the shopper.
+3.  **Cancellation Post-Payment**: Once an order reaches `Paid` or `Purchasing`, standard cancellations are disabled. In case of extreme events (e.g., traveler cannot find the item, customs confiscation), the case must be escalated to the Admin to trigger a manual `Refunded` or `Cancelled` state, returning the escrow money to the shopper.

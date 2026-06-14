@@ -1,3 +1,11 @@
+---
+agent: Product Manager Agent (PMA)
+version: 1.1.0
+date: 2026-06-14
+status: Draft
+predecessor: docs/02-product/planning/core-user-flow.md
+---
+
 # Epic 004: Quotation & Expiry
 
 > **Status**: 📝 Draft
@@ -29,9 +37,9 @@ Scenario: Send a quotation successfully
     | Estimated Weight | 1.0 kg |
   And I click "Send Quote"
   Then the quote should be registered in the system
-  And the order status should change to "Payment Pending"
+  And the order status should change to "Quoted"
   And the platform should temporarily reserve 1.0 kg of my baggage capacity
-  And the system should trigger an email notification to the Shopper containing a payment link
+  And the system should trigger a notification to the Shopper containing the quote details
 ```
 
 ---
@@ -52,12 +60,12 @@ Scenario: Send a quotation successfully
 ```gherkin
 Scenario: Automatic expiration of unpaid quotes
   Given a quotation was sent 24 hours ago
-  And the order status is currently "Payment Pending" (unpaid)
+  And the order status is currently "Quoted" or "Payment Pending" (unpaid)
   And 1.0 kg baggage capacity is currently in "reserved capacity" status for this quote
   When the 24-hour payment window closes
-  Then the system should change the quote status to "Expired"
+  Then the system should change the status to "Expired"
   And the system should remove the 1.0 kg from "reserved capacity" and add it back to "available capacity"
-  And the system should notify both the Traveler and Shopper via email that the quote has expired
+  And the system should notify both the Traveler and Shopper that the quote has expired
 ```
 
 ---
@@ -78,15 +86,15 @@ Scenario: Automatic expiration of unpaid quotes
 ```gherkin
 Scenario: Shopper receives notification of incoming quote
   Given a Traveler sends a Quote for "Tokyo Banana Classic"
-  Then the Shopper should receive an email containing the price breakdown and direct link to fund escrow
+  Then the Shopper should receive a notification containing the price breakdown and direct link to fund escrow
 
 Scenario: Traveler receives notification of successful payment
   Given a Shopper completes payment for a quote
-  Then the Traveler should receive an email stating: "Payment Received. You are safe to purchase Tokyo Banana Classic."
+  Then the Traveler should receive a notification stating: "Payment Received. You are safe to purchase Tokyo Banana Classic."
 
 Scenario: Shopper receives notification of shipment
   Given a Traveler marks an order as "In Transit" and inputs a tracking number
-  Then the Shopper should receive an email with the tracking details (e.g. JNE) and courier link
+  Then the Shopper should receive a notification with the tracking details and courier link
 ```
 
 ---

@@ -1,7 +1,15 @@
+---
+agent: Product Manager Agent (PMA)
+version: 1.1.0
+date: 2026-06-14
+status: Draft
+predecessor: docs/02-product/planning/mvp-definition.md
+---
+
 # Product Roadmap
 
 > **Status**: 📝 Draft
-> **Last Updated**: 2026-06-06
+> **Last Updated**: 2026-06-14
 
 This roadmap aligns engineering effort with the Go-To-Market strategy, focusing heavily on a lean 3-month MVP launch.
 
@@ -31,7 +39,7 @@ This roadmap aligns engineering effort with the Go-To-Market strategy, focusing 
 
 * **Tech:** Payout logic (releasing funds to Traveler).
 * **Product:**
-  * Order Tracking Dashboard (Requested → Quoted → Payment Pending → Paid → Purchased → In Transit → Delivered → Completed).
+  * Order Tracking Dashboard (Requested → Quoted → Payment Pending → Paid → Purchasing → Purchased → In Transit → Delivered → Completed).
   * Email Notifications (automated status updates).
   * Reviews & Ratings System (text reviews and star ratings).
   * QA & Security Audit.

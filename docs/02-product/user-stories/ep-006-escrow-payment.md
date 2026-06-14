@@ -1,3 +1,11 @@
+---
+agent: Product Manager Agent (PMA)
+version: 1.1.0
+date: 2026-06-14
+status: Draft
+predecessor: docs/02-product/planning/core-user-flow.md
+---
+
 # Epic 006: Escrow Integration
 
 > **Status**: 📝 Draft
@@ -29,6 +37,14 @@ Scenario: Successful payment funds escrow
   And the system should lock IDR 350,000 in the platform's Escrow account
   And the order status should change to "Paid"
   And Budi (Traveler) should receive a confirmation notification to purchase the item
+
+Scenario: Failed or expired payment transitions to Expired
+  Given I am logged in as a Shopper
+  And I have a quote from Budi for "Tokyo Banana Classic" (IDR 350,000) in status "Payment Pending"
+  When the payment gateway session fails or expires
+  Then the platform should receive a failed/expired webhook from Xendit/Midtrans
+  And the order status should change to "Expired"
+  And the system should release the reserved baggage capacity of Budi's trip
 ```
 
 ---
