@@ -3,7 +3,7 @@ agent: Product Manager Agent (PMA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/02-product/planning/mvp-definition.md
+predecessor: docs/02-product/planning/feature-prioritization.md
 ---
 
 # Product Roadmap

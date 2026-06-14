@@ -42,22 +42,48 @@ All documentation is finalized and ready for **Gate 1 PMA Approval** and transit
 
 ## 3. Deliverables Produced
 
-The following files have been modified, reorganized, and synchronized:
-*   **[transaction-flow.md](file:///d:/mytrip-mytitipan/docs/02-product/flows/transaction-flow.md)** [NEW]: Core end-to-end transaction flow, including auth prompts, capacity rules, and status definitions.
-*   **[user-journey.md](file:///d:/mytrip-mytitipan/docs/02-product/flows/user-journey.md)** [MOVED]: Reorganized traveler and shopper journeys.
-*   **[feature-prioritization.md](file:///d:/mytrip-mytitipan/docs/02-product/planning/feature-prioritization.md)**: Updated MoSCoW prioritization schema.
-*   **[mvp-definition.md](file:///d:/mytrip-mytitipan/docs/02-product/planning/mvp-definition.md)**: Refined MVP boundaries and added state tracking implementation notes.
-*   **[product-roadmap.md](file:///d:/mytrip-mytitipan/docs/02-product/planning/product-roadmap.md)**: Aligned lifecycle tracking stages.
-*   **[use-case-specifications.md](file:///d:/mytrip-mytitipan/docs/02-product/use-cases/use-case-specifications.md)**: Updated system triggers and added UC-016.
-*   **[ep-004-quotation.md](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/ep-004-quotation.md)**: Aligned epic story structures.
-*   **[ep-005-order-management.md](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/ep-005-order-management.md)**: Incorporated US-005-005.
-*   **[ep-006-escrow-payment.md](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/ep-006-escrow-payment.md)**: Added gateway failure pathways.
-*   **[order-lifecycle.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/order-lifecycle.md)**: Synced status timelines and transition states.
-*   **[exception-flows.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/exception-flows.md)**: Refined dispute and exception flowcharts.
+The product documentation structure has been completely reorganized and synchronized to enable down-funnel agent handoffs. The following deliverables have been produced:
+
+### A. Planning & Flows
+*   **[roadmap.md](file:///d:/mytrip-mytitipan/docs/02-product/planning/roadmap.md)** [RENAMED]: Replaces `product-roadmap.md` with updated references.
+*   **[business-flow.md](file:///d:/mytrip-mytitipan/docs/02-product/flows/business-flow.md)** [NEW]: High-level process milestones and platform guardrails.
+*   **[state-machine.md](file:///d:/mytrip-mytitipan/docs/02-product/flows/state-machine.md)** [NEW]: Detailed transition mapping for all order states and baggage capacity checks.
+
+### B. Requirements & Specs
+*   **[product-requirements.md](file:///d:/mytrip-mytitipan/docs/02-product/requirements/product-requirements.md)** [NEW]: Standard platform SLA limits, currency conversion rules, and error handling policies.
+*   **[feature-requirements.md](file:///d:/mytrip-mytitipan/docs/02-product/requirements/feature-requirements.md)** [NEW]: Functional feature specifications and input validations for Must Have and Should Have features.
+
+### C. Use Case Specifications [SPLIT & REORGANIZED]
+*   **[traveler-usecases.md](file:///d:/mytrip-mytitipan/docs/02-product/use-cases/traveler-usecases.md)** [NEW]: Formally documents Traveler use cases (`UC-001`, `UC-002`, `UC-005`, `UC-009`, `UC-015`, `UC-016`).
+*   **[shopper-usecases.md](file:///d:/mytrip-mytitipan/docs/02-product/use-cases/shopper-usecases.md)** [NEW]: Formally documents Shopper use cases (`UC-001`, `UC-003`, `UC-004`, `UC-007`, `UC-008`, `UC-010`, `UC-011`).
+*   **[admin-usecases.md](file:///d:/mytrip-mytitipan/docs/02-product/use-cases/admin-usecases.md)** [NEW]: Formally documents Admin and System automation use cases (`UC-012`, `UC-006`, `UC-013`, `UC-014`).
+*   **[README.md](file:///d:/mytrip-mytitipan/docs/02-product/use-cases/README.md)** [UPDATED]: Updated to link to actor-specific use case files.
+*   *Deleted obsolete `use-case-specifications.md`.*
+
+### D. User Stories [SPLIT & REORGANIZED BY ACTOR]
+*   **[traveler/](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/traveler/)** [NEW]: Subfolder housing traveler stories:
+    - `create-trip.md`: Stories `US-002-001`, `US-002-002`, `US-002-003`.
+    - `review-request.md`: Story `US-005-001`.
+    - `send-quote.md`: Stories `US-004-001`, `US-004-002`, `US-004-003`, `US-005-005`.
+*   **[shopper/](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/shopper/)** [NEW]: Subfolder housing shopper stories:
+    - `submit-request.md`: Stories `US-001-001`, `US-001-002`, `US-003-001`.
+    - `pay-order.md`: Story `US-006-001`.
+    - `confirm-delivery.md`: Stories `US-005-002`, `US-005-003`.
+*   **[admin/](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/admin/)** [NEW]: Subfolder housing admin stories:
+    - `review-dispute.md`: Story `US-005-004`.
+*   **[README.md](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/README.md)** [UPDATED]: Updated index mapping for actor-based stories.
+*   *Deleted obsolete epic files `ep-001` through `ep-006`.*
+
+### E. Design & Navigation Link Syncing
+*   **[README.md](file:///d:/mytrip-mytitipan/docs/README.md)** [UPDATED]: Synchronized global documentation hub links.
+*   **[README.md](file:///d:/mytrip-mytitipan/docs/02-product/README.md)** [UPDATED]: Synced product doc tables with new directory tree.
+*   **[README.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/README.md)** [UPDATED]: Added references to new flows and requirements.
+*   **[order-lifecycle.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/order-lifecycle.md)** [UPDATED]: Synced predecessor header links.
+*   **[exception-flows.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/exception-flows.md)** [UPDATED]: Synced predecessor header links.
 
 ---
 
 ## 4. Next Steps
 
-1.  **PMA Strategy Sign-off (Gate 1)**: Business owner reviews and signs off on the PMA strategy deliverables.
-2.  **Solution Architect Handoff**: Solution Architect Agent (SAA) consumes this handoff log and begins the high-level system architecture and DDL schema specifications.
+1.  **Gate 1 Sign-off**: Verify formatting and merge this PRD/governance package.
+2.  **Solution Architect Handoff**: Solution Architect Agent (SAA) consumes this package to structure technical architecture.

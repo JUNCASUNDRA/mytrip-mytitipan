@@ -28,9 +28,10 @@ Click the links below to view the specific flows and inventories:
 6.  **[Notifications Map](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/notifications.md)**: Documents the transactional notification triggers, recipient targets, channels, and message templates.
 7.  **[Exception and Dispute Flows](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/exception-flows.md)**: Details the step-by-step UX flows, triggers, and mechanics for handling cancellations, out-of-stock items, and escrow disputes.
 
-## References
-
 *   [Transaction Flow](file:///d:/mytrip-mytitipan/docs/02-product/flows/transaction-flow.md)
+*   [Business Flow](file:///d:/mytrip-mytitipan/docs/02-product/flows/business-flow.md)
+*   [State Machine](file:///d:/mytrip-mytitipan/docs/02-product/flows/state-machine.md)
 *   [User Journeys](file:///d:/mytrip-mytitipan/docs/02-product/flows/user-journey.md)
 *   [MVP Definition](file:///d:/mytrip-mytitipan/docs/02-product/planning/mvp-definition.md)
 *   [Feature Prioritization](file:///d:/mytrip-mytitipan/docs/02-product/planning/feature-prioritization.md)
+*   [Product Requirements](file:///d:/mytrip-mytitipan/docs/02-product/requirements/product-requirements.md)

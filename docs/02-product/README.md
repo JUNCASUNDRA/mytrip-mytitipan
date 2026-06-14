@@ -27,19 +27,23 @@ Defines the product vision, MVP scope boundaries, core user flows, and user stor
 |---|----------|--------|-------------|
 | 1 | [Transaction Flow](flows/transaction-flow.md) | 📝 Draft | Core transactional business process flows |
 | 2 | [User Journey](flows/user-journey.md) | 📝 Draft | End-to-end customer journey map |
+| 3 | [Business Flow](flows/business-flow.md) | 📝 Draft | High-level business milestones |
+| 4 | [State Machine](flows/state-machine.md) | 📝 Draft | State transitions for order/payment lifecycle |
 
 ### Planning
 | # | Document | Status | Description |
 |---|----------|--------|-------------|
 | 1 | [MVP Definition](planning/mvp-definition.md) | 📝 Draft | Definition of MVP scope boundaries |
 | 2 | [Feature Prioritization](planning/feature-prioritization.md) | 📝 Draft | Feature prioritization list (MoSCoW) |
-| 3 | [Product Roadmap](planning/product-roadmap.md) | 📝 Draft | Product release and milestone roadmap |
+| 3 | [Product Roadmap](planning/roadmap.md) | 📝 Draft | Product release and milestone roadmap |
 
 ### Requirements & Specifications
 | # | Document | Status | Description |
 |---|----------|--------|-------------|
-| 1 | [User Stories](user-stories/) | 📝 Draft | Epics and user stories backlog |
-| 2 | [Use Cases](use-cases/use-case-specifications.md) | 📝 Draft | Detailed use case specifications |
+| 1 | [User Stories](user-stories/README.md) | 📝 Draft | Backlog sorted by actor (Traveler, Shopper, Admin) |
+| 2 | [Use Cases](use-cases/README.md) | 📝 Draft | Specifications sorted by actor and system |
+| 3 | [Product Requirements](requirements/product-requirements.md) | 📝 Draft | Platform limits, SLA constraints, and rules |
+| 4 | [Feature Requirements](requirements/feature-requirements.md) | 📝 Draft | Functional feature criteria specifications |
 
 ---
 

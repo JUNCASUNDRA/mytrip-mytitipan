@@ -3,13 +3,18 @@ agent: Product Manager Agent (PMA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/02-product/flows/transaction-flow.md
+predecessor: docs/02-product/user-stories/ep-004-quotation.md
+outputs:
+  - traveler-quote-stories
+depends_on:
+  - state-machine.md
 ---
 
-# Epic 004: Quotation & Expiry
+# Traveler User Stories - Quotation & Procurement
 
-> **Status**: 📝 Draft
-> **Sprint**: TBD
+> **Status**: 📝 Draft **Last Updated**: 2026-06-14
+
+This document captures the user stories related to sending quotes, quote expiry constraints, receiving payment confirmations, and procurement fulfillment.
 
 ---
 
@@ -70,11 +75,11 @@ Scenario: Automatic expiration of unpaid quotes
 
 ---
 
-## US-004-003: Email Notifications
+## US-004-003: Traveler Payment Notification
 
-**As a** User (Traveler/Shopper),
-**I want to** receive automated email notifications when key transaction milestones are reached,
-**So that** I am immediately informed of changes without manually polling the web app.
+**As a** Traveler,
+**I want to** receive automated notifications when a shopper completes payment for my quote,
+**So that** I know it is safe to proceed with purchasing the item.
 
 | Attribute | Value |
 |-----------|-------|
@@ -84,20 +89,37 @@ Scenario: Automatic expiration of unpaid quotes
 ### Acceptance Criteria
 
 ```gherkin
-Scenario: Shopper receives notification of incoming quote
-  Given a Traveler sends a Quote for "Tokyo Banana Classic"
-  Then the Shopper should receive a notification containing the price breakdown and direct link to fund escrow
-
 Scenario: Traveler receives notification of successful payment
   Given a Shopper completes payment for a quote
   Then the Traveler should receive a notification stating: "Payment Received. You are safe to purchase Tokyo Banana Classic."
-
-Scenario: Shopper receives notification of shipment
-  Given a Traveler marks an order as "In Transit" and inputs a tracking number
-  Then the Shopper should receive a notification with the tracking details and courier link
 ```
 
 ---
 
-> **Total Story Points**: 13
-> **Related Use Cases**: [UC-005](use-cases/use-case-specifications.md#uc-005-create--send-quotation), [UC-013](use-cases/use-case-specifications.md#uc-013-auto-expire-quote--release-capacity), [UC-014](use-cases/use-case-specifications.md#uc-014-send-email-notification)
+## US-005-005: Procure & Purchase Item
+
+**As a** Traveler,
+**I want to** update my order status when I start procurement and upload optional receipts/photos when the item is purchased,
+**So that** the shopper is kept informed and trusts the purchase validity.
+
+| Attribute | Value |
+|-----------|-------|
+| Priority | Must Have |
+| Story Points | 5 |
+
+### Acceptance Criteria
+
+```gherkin
+Scenario: Start procurement transitions status to Purchasing
+  Given I am logged in as a Traveler
+  And my order status is "Paid"
+  When I click "Start Purchasing"
+  Then the order status should change to "Purchasing"
+
+Scenario: Mark purchased with optional receipt upload
+  Given my order status is "Purchasing"
+  And I am logged in as the Traveler
+  When I upload a photo of the receipt or item (optional)
+  And I click "Mark as Purchased"
+  Then the order status should change to "Purchased"
+```

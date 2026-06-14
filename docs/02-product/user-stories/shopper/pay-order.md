@@ -3,13 +3,18 @@ agent: Product Manager Agent (PMA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/02-product/flows/transaction-flow.md
+predecessor: docs/02-product/user-stories/ep-006-escrow-payment.md
+outputs:
+  - shopper-payment-stories
+depends_on:
+  - state-machine.md
 ---
 
-# Epic 006: Escrow Integration
+# Shopper User Stories - Escrow Payment
 
-> **Status**: 📝 Draft
-> **Sprint**: TBD
+> **Status**: 📝 Draft **Last Updated**: 2026-06-14
+
+This document captures the user stories related to shopper funding and payment checkout via escrow gateway integration.
 
 ---
 
@@ -46,8 +51,3 @@ Scenario: Failed or expired payment transitions to Expired
   And the order status should change to "Expired"
   And the system should release the reserved baggage capacity of Budi's trip
 ```
-
----
-
-> **Total Story Points**: 5
-> **Related Use Cases**: [UC-007](use-cases/use-case-specifications.md#uc-007-pay-via-escrow)

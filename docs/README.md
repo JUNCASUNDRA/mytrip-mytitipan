@@ -23,7 +23,7 @@ Follow the reading order below to understand the project comprehensively, from t
 - [MVP Definition](file:///d:/mytrip-mytitipan/docs/02-product/planning/mvp-definition.md) — Strict feature boundaries for the MVP.
 - [Feature Prioritization](file:///d:/mytrip-mytitipan/docs/02-product/planning/feature-prioritization.md) — MoSCoW prioritization matrix.
 - [Transaction Flow](file:///d:/mytrip-mytitipan/docs/02-product/flows/transaction-flow.md) — The primary transaction interaction flows.
-- [Product Roadmap](file:///d:/mytrip-mytitipan/docs/02-product/planning/product-roadmap.md) — The development timeline.
+- [Product Roadmap](file:///d:/mytrip-mytitipan/docs/02-product/planning/roadmap.md) — The development timeline.
 - [User Stories](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/README.md) — Collection of user stories by Epic.
 
 ### 3. [🎨 Design (03-design)](file:///d:/mytrip-mytitipan/docs/03-design/README.md)
