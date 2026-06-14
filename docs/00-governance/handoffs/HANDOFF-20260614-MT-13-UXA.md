@@ -27,7 +27,10 @@ This documentation package is complete and ready for Gate 3 Architecture review.
 
 The following files under `docs/03-design/` have been created or modified:
 *   **[HANDOFF.md](file:///d:/mytrip-mytitipan/docs/03-design/HANDOFF.md)** [NEW]: Completed flows summary, screen map, open questions, and risks.
-*   **[wireframes/README.md](file:///d:/mytrip-mytitipan/docs/03-design/wireframes/README.md)**: Completely rewritten to specify low-fidelity layouts for screens `SCR-001` through `SCR-013`. Out-of-scope Home Feed/Search flows have been removed.
+*   **[wireframes/](file:///d:/mytrip-mytitipan/docs/03-design/wireframes/)**: Restructured to house 13 detailed screen layout specs:
+    - [scr-001-login.md](wireframes/scr-001-login.md) through [scr-013-admin-dispute.md](wireframes/scr-013-admin-dispute.md).
+    - [README.md](wireframes/README.md) [UPDATED]: Centralized dashboard indexing the spec files, with all out-of-scope Home Feed screens removed.
+    - Embedded 6 visual PNG mockups directly inside key screen specs (`SCR-002`, `SCR-003`, `SCR-004`, `SCR-005`, `SCR-006`, and `SCR-010`).
 *   **[user-flow/notifications.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/notifications.md)**: Updated notification channels to designate Email as the primary MVP mechanism and Web Push as deferred (V1.1).
 *   **[mockups/README.md](file:///d:/mytrip-mytitipan/docs/03-design/mockups/README.md)**: Updated status matrix to reference all 13 screens.
 
