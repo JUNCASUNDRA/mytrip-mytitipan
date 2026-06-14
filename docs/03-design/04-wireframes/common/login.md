@@ -3,11 +3,11 @@ agent: UX Designer Agent (UXA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/wireframes/README.md
+predecessor: docs/03-design/04-wireframes/README.md
 outputs:
   - scr-001-spec
 depends_on:
-  - user-stories/shopper/submit-request.md
+  - docs/02-product/user-stories/shopper/submit-request.md
 ---
 
 # SCR-001: Login / Register
@@ -83,5 +83,5 @@ This screen provides the authentication gateway for all users (Shoppers, Travele
 
 ## 4. Traceability
 
-* **User Story:** [US-001-001](../user-stories/shopper/submit-request.md#us-001-001-shopper-registration--authentication), [US-001-002](../user-stories/shopper/submit-request.md#us-001-002-shopper-login)
-* **Requirement:** [User Onboarding](../../02-product/requirements/product-requirements.md#2-user-role-rules--constraints)
+* **User Story:** [US-001-001](../../../../02-product/user-stories/shopper/submit-request.md#us-001-001-shopper-registration--authentication), [US-001-002](../../../../02-product/user-stories/shopper/submit-request.md#us-001-002-shopper-login)
+* **Requirement:** [User Onboarding](../../../02-product/requirements/product-requirements.md#2-user-role-rules--constraints)

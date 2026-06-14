@@ -1,9 +1,9 @@
 ---
 agent: UX Designer Agent (UXA)
-version: 1.0.0
-date: 2026-06-09
+version: 1.1.0
+date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/user-flow/README.md
+predecessor: docs/03-design/03-user-flow/README.md
 ---
 
 # Screen Inventory

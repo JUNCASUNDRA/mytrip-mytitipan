@@ -3,11 +3,11 @@ agent: UX Designer Agent (UXA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/wireframes/README.md
+predecessor: docs/03-design/04-wireframes/README.md
 outputs:
   - scr-006-spec
 depends_on:
-  - user-stories/traveler/create-trip.md
+  - docs/02-product/user-stories/traveler/create-trip.md
 ---
 
 # SCR-006: Traveler Dashboard
@@ -79,5 +79,5 @@ This screen serves as the primary home area for authenticated travelers to manag
 
 ## 4. Traceability
 
-* **User Story:** [US-002-001](../user-stories/traveler/create-trip.md#us-002-001-publish-trip), [US-005-001](../user-stories/traveler/review-request.md#us-005-001-traveler-order-tracking-dashboard)
-* **Requirement:** [Trip inventory specs](../../02-product/requirements/feature-requirements.md#1-trip-publisher)
+* **User Story:** [US-002-001](../../../../02-product/user-stories/traveler/create-trip.md#us-002-001-publish-trip), [US-005-001](../../../../02-product/user-stories/traveler/review-request.md#us-005-001-traveler-order-tracking-dashboard)
+* **Requirement:** [Trip inventory specs](../../../02-product/requirements/feature-requirements.md#1-trip-publisher)

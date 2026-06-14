@@ -3,11 +3,11 @@ agent: UX Designer Agent (UXA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/wireframes/README.md
+predecessor: docs/03-design/04-wireframes/README.md
 outputs:
   - scr-005-spec
 depends_on:
-  - user-stories/shopper/pay-order.md
+  - docs/02-product/user-stories/shopper/pay-order.md
 ---
 
 # SCR-005: Quote & Checkout Page
@@ -85,5 +85,5 @@ This screen presents shoppers with the item price and traveler fee breakdown, qu
 
 ## 4. Traceability
 
-* **User Story:** [US-006-001](../user-stories/shopper/pay-order.md#us-006-001-fund-escrow-payment)
-* **Requirement:** [Quotation Specs & Capacity Locks](../../02-product/requirements/feature-requirements.md#3-quotation-engine)
+* **User Story:** [US-006-001](../../../../02-product/user-stories/shopper/pay-order.md#us-006-001-fund-escrow-payment)
+* **Requirement:** [Quotation Specs & Capacity Locks](../../../02-product/requirements/feature-requirements.md#3-quotation-engine)

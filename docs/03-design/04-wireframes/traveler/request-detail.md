@@ -3,11 +3,11 @@ agent: UX Designer Agent (UXA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/wireframes/README.md
+predecessor: docs/03-design/04-wireframes/README.md
 outputs:
   - scr-009-spec
 depends_on:
-  - user-stories/traveler/send-quote.md
+  - docs/02-product/user-stories/traveler/send-quote.md
 ---
 
 # SCR-009: Request Review Screen
@@ -87,5 +87,5 @@ This screen allows travelers to review a shopper's product request, accept it by
 
 ## 4. Traceability
 
-* **User Story:** [US-004-001](../user-stories/traveler/send-quote.md#us-004-001-create--send-quotation)
-* **Requirement:** [Quotation Engine specifications](../../02-product/requirements/feature-requirements.md#3-quotation-engine)
+* **User Story:** [US-004-001](../../../../02-product/user-stories/traveler/send-quote.md#us-004-001-create--send-quotation)
+* **Requirement:** [Quotation Engine specifications](../../../02-product/requirements/feature-requirements.md#3-quotation-engine)

@@ -3,11 +3,11 @@ agent: UX Designer Agent (UXA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/wireframes/README.md
+predecessor: docs/03-design/04-wireframes/README.md
 outputs:
   - scr-004-spec
 depends_on:
-  - user-stories/shopper/confirm-delivery.md
+  - docs/02-product/user-stories/shopper/confirm-delivery.md
 ---
 
 # SCR-004: Shopper Dashboard
@@ -84,5 +84,5 @@ This is the primary area for authenticated shoppers to track active product requ
 
 ## 4. Traceability
 
-* **User Story:** [US-005-001](../user-stories/traveler/review-request.md#us-005-001-traveler-order-tracking-dashboard), [US-005-002](../user-stories/shopper/confirm-delivery.md#us-005-002-delivery-confirmation--payout-trigger)
-* **Requirement:** [Order tracking specs](../../02-product/requirements/feature-requirements.md#8-order-lifecycle-tracking-dashboard)
+* **User Story:** [US-005-001](../../../../02-product/user-stories/traveler/review-request.md#us-005-001-traveler-order-tracking-dashboard), [US-005-002](../../../../02-product/user-stories/shopper/confirm-delivery.md#us-005-002-delivery-confirmation--payout-trigger)
+* **Requirement:** [Order tracking specs](../../../02-product/requirements/feature-requirements.md#8-order-lifecycle-tracking-dashboard)

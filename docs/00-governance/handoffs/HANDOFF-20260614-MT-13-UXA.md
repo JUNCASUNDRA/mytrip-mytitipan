@@ -26,13 +26,23 @@ This documentation package is complete and ready for Gate 3 Architecture review.
 ## 2. Deliverables Refined & Produced
 
 The following files under `docs/03-design/` have been created or modified:
-*   **[HANDOFF.md](file:///d:/mytrip-mytitipan/docs/03-design/HANDOFF.md)** [NEW]: Completed flows summary, screen map, open questions, and risks.
-*   **[wireframes/](file:///d:/mytrip-mytitipan/docs/03-design/wireframes/)**: Restructured to house 13 detailed screen layout specs:
-    - [scr-001-login.md](wireframes/scr-001-login.md) through [scr-013-admin-dispute.md](wireframes/scr-013-admin-dispute.md).
-    - [README.md](wireframes/README.md) [UPDATED]: Centralized dashboard indexing the spec files, with all out-of-scope Home Feed screens removed.
-    - Embedded 6 visual PNG mockups directly inside key screen specs (`SCR-002`, `SCR-003`, `SCR-004`, `SCR-005`, `SCR-006`, and `SCR-010`).
-*   **[user-flow/notifications.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/notifications.md)**: Updated notification channels to designate Email as the primary MVP mechanism and Web Push as deferred (V1.1).
-*   **[mockups/README.md](file:///d:/mytrip-mytitipan/docs/03-design/mockups/README.md)**: Updated status matrix to reference all 13 screens.
+*   **[README.md](file:///d:/mytrip-mytitipan/docs/03-design/README.md)** [UPDATED]: Updated document index to include UX Research and Information Architecture sections.
+*   **[01-ux-research/ux-principles.md](file:///d:/mytrip-mytitipan/docs/03-design/01-ux-research/ux-principles.md)** [NEW]: Core principles (e.g. Invisible Trust, suitcase capacity HSL indicators, mobile-first layouts).
+*   **[01-ux-research/usability-assumptions.md](file:///d:/mytrip-mytitipan/docs/03-design/01-ux-research/usability-assumptions.md)** [NEW]: Mitigations for capital anxiety, overbooking, and checkout abandonment.
+*   **[01-ux-research/user-pain-points.md](file:///d:/mytrip-mytitipan/docs/03-design/01-ux-research/user-pain-points.md)** [NEW]: Friction points matrix and resolutions.
+*   **[02-information-architecture/navigation-map.md](file:///d:/mytrip-mytitipan/docs/03-design/02-information-architecture/navigation-map.md)** [NEW]: Global navigation maps, mobile web bottom layouts, guest vs. auth routes.
+*   **[02-information-architecture/sitemap.md](file:///d:/mytrip-mytitipan/docs/03-design/02-information-architecture/sitemap.md)** [NEW]: Route structure and URL mappings.
+*   **[02-information-architecture/screen-inventory.md](file:///d:/mytrip-mytitipan/docs/03-design/02-information-architecture/screen-inventory.md)** [UPDATED]: Synced screen inventory tracking.
+*   **[03-user-flow/traveler-flow.md](file:///d:/mytrip-mytitipan/docs/03-design/03-user-flow/traveler-flow.md)** [UPDATED]: Refined entry/exit routes, trip management dashboards, and lifecycle states.
+*   **[03-user-flow/shopper-flow.md](file:///d:/mytrip-mytitipan/docs/03-design/03-user-flow/shopper-flow.md)** [UPDATED]: Standardized quotation expirations and checkout screens.
+*   **[03-user-flow/admin-flow.md](file:///d:/mytrip-mytitipan/docs/03-design/03-user-flow/admin-flow.md)** [UPDATED]: Complete user-centered rewrite focusing on dashboard metrics and detail actions (refund, payout, suspend).
+*   **[03-user-flow/notification-flow.md](file:///d:/mytrip-mytitipan/docs/03-design/03-user-flow/notification-flow.md)** [UPDATED]: Updated channels to designate Email as primary and Push as deferred (V1.1).
+*   **[HANDOFF.md](file:///d:/mytrip-mytitipan/docs/03-design/HANDOFF.md)** [UPDATED]: Completed flows summary, screen map, open questions, and risks.
+*   **[04-wireframes/](file:///d:/mytrip-mytitipan/docs/03-design/04-wireframes/)**: Restructured to house 13 detailed screen layout specs:
+    - [login.md](04-wireframes/common/login.md) through [dispute.md](04-wireframes/admin/dispute.md).
+    - [README.md](04-wireframes/README.md) [UPDATED]: Centralized dashboard indexing the spec files.
+    - Embedded 6 visual PNG mockups directly inside key actor subfolders under `05-mockups/`.
+*   **[05-mockups/README.md](file:///d:/mytrip-mytitipan/docs/03-design/05-mockups/README.md)**: Updated status matrix to reference all 13 screens.
 
 ---
 

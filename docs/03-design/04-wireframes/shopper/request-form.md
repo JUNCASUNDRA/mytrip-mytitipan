@@ -3,11 +3,11 @@ agent: UX Designer Agent (UXA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/wireframes/README.md
+predecessor: docs/03-design/04-wireframes/README.md
 outputs:
   - scr-003-spec
 depends_on:
-  - user-stories/shopper/submit-request.md
+  - docs/02-product/user-stories/shopper/submit-request.md
 ---
 
 # SCR-003: Product Request Form
@@ -85,5 +85,5 @@ This screen contains a structured form allowing shoppers to submit detailed requ
 
 ## 4. Traceability
 
-* **User Story:** [US-003-001](../user-stories/shopper/submit-request.md#us-003-001-submit-product-request)
-* **Requirement:** [Product Request Form](../../02-product/requirements/feature-requirements.md#2-product-request-form)
+* **User Story:** [US-003-001](../../../../02-product/user-stories/shopper/submit-request.md#us-003-001-submit-product-request)
+* **Requirement:** [Product Request Form](../../../02-product/requirements/feature-requirements.md#2-product-request-form)
