@@ -20,11 +20,28 @@ This runbook defines the operational procedures for Gemini CLI when executing as
 ### 3. Finalization & Commit
 - **Artifact Generation**: Ensure all required markdown files, diagrams, or code are present.
 - **Metadata Tagging**: Apply the standard metadata header to every generated file.
-- **Handoff Creation**: Write a `HANDOFF.md` summarizing the work, key decisions, and remaining risks.
-- **GitHub Sync (Close)**: Close the issue using `gh issue close <ID> --comment "Completed. Handoff: <PATH_TO_HANDOFF>"`.
-- **Atomic Commit**: All artifacts must be committed to a feature branch using the standardized commit message format: `[AGENT_ID] Action: Brief Description`.
+- **Branching**: Create a new branch: `git checkout -b <type>/[ticket-id]-[slug]`.
+- **Handoff Creation**: Write a `HANDOFF.md` summarizing the work.
+- **Atomic Commit**: Commit changes using `[AGENT_ID] Action: Description`.
+- **Push & PR**: Push the branch and create a PR: `gh pr create --title "[AGENT_ID] <Subject> (Closes #<ID>)" --body "Handoff: <PATH>"`.
+- **GitHub Sync (Close)**: (Skip if PR is created, PR will handle closing upon merge).
 
-### 4. Transition
+## Reviewer Agent (RA) Procedure
+
+### 1. PR Discovery
+- Retrieve open PRs: `gh pr list --label "needs-review"`.
+
+### 2. Analysis
+- View PR changes: `gh pr diff <PR_NUMBER>`.
+- Run automated tests/linters on the PR branch.
+- Cross-reference with `docs/04-technical/` and `Success Criteria`.
+
+### 3. Feedback Loop
+- **If issues found**: Use `gh pr comment <PR_NUMBER> --body "..."` or `gh pr review <PR_NUMBER> --request-changes --body "..."`.
+- **If approved**: Use `gh pr review <PR_NUMBER> --approve --body "Validated against blueprints and DoD."`.
+
+### 4. Human Transition
+- Notify the human gatekeeper that the PR is ready for final review and merge.
 - **Approval Request**: Notify the human gatekeeper that the phase is ready for review.
 - **Halt**: Gemini CLI must stop execution and wait for human approval before assuming the next persona.
 
