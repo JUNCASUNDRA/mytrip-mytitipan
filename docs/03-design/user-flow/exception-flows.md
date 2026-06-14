@@ -1,9 +1,9 @@
 ---
-agent: UX Designer Agent (UXA)
-version: 1.0.0
-date: 2026-06-09
+agent: Product Manager Agent (PMA)
+version: 1.1.0
+date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/user-flow/README.md
+predecessor: docs/02-product/flows/state-machine.md
 ---
 # Exception and Dispute Flows
 
@@ -26,12 +26,12 @@ These exceptions occur before the shopper secures the transaction with escrow fu
 
 ### Scenario B: Pre-Payment Quote Expiry (24h Window)
 
-1. **Trigger**: Traveler sent a quote, initiating a temporary baggage capacity reservation, but the shopper does not pay within the 24-hour limit.
-2. **Action**: Automated cron job detects `payment_window_closed` (created_at + 24 hours).
+1. **Trigger**: Traveler sent a quote, initiating a temporary baggage capacity reservation, but the shopper does not pay within the 24-hour limit, or the payment gateway transaction fails/expires.
+2. **Action**: Automated cron job detects `payment_window_closed` (created_at + 24 hours), or payment gateway callback reports checkout failed/expired status.
 3. **System Logic**:
    - Order status transitions: `Quoted` or `Payment Pending` → `Expired`.
    - Capacity release: Reserved weight is immediately released and added back to `trip.available_capacity`.
-4. **UX Result**: Shopper receives a push/email notification: *"Your quote for Tokyo items has expired. Baggage capacity has been released."* Shopper Dashboard update removes the active checkout option.
+4. **UX Result**: Shopper receives a notification: *"Your quote for Tokyo items has expired. Baggage capacity has been released."* Shopper Dashboard update removes the active checkout option.
 
 ---
 
@@ -41,23 +41,23 @@ These exceptions occur after the shopper's payment is secured in escrow. These r
 
 ### Scenario C: Item Out-of-Stock / Unavailable
 
-1. **Trigger**: Traveler is abroad, attempts to purchase the item, but discovers it is completely unavailable or sold out.
+1. **Trigger**: Traveler is abroad (in `Purchasing` state), attempts to purchase the item, but discovers it is completely unavailable or sold out.
 2. **Action**: Traveler clicks **"Mark Out of Stock"** on `SCR-010`.
 3. **System Logic**:
-   - Order status transitions: `Paid` → `Cancelled`.
+   - Order status transitions: `Purchasing` (or `Paid`) → `Cancelled` → `Refunded`.
    - Baggage capacity is unlocked: Weight is released back to `trip.available_capacity`.
-   - Automated Refund Queue: System queues a manual refund validation for the Admin.
+   - Automated Refund Queue: System triggers an automated escrow refund process via Xendit/Midtrans.
 4. **UX Result**:
-   - **Shopper**: Receives alert: *"Budi reported that the Tokyo item is out of stock. The Admin will process your refund shortly."*
-   - **Admin**: Receives alert in Dispute/Refund Manager (`SCR-013`) to approve and trigger the escrow refund via Xendit/Midtrans.
+   - **Shopper**: Receives alert: *"Budi reported that the Tokyo item is out of stock. Your refund has been initiated."*
+   - **Admin**: Receives log confirmation of successful refund transaction.
 
 ### Scenario D: Traveler Cancels Trip or Becomes Unresponsive
 
 1. **Trigger**: Traveler cancels their flight or fails to communicate/update status after the item has been marked `Paid`.
 2. **Action**: Shopper triggers a ticket or waits until 7 days post-arrival date, then escalates via customer support, or clicks **"Raise Dispute"** on `SCR-004`.
 3. **System Logic**:
-   - Order status transitions: `Paid` or `Purchased` → `Disputed`.
-4. **UX Result**: Admin reviews communications and flight cancellation proof. Admin triggers manual refund to shopper, transitioning status to `Cancelled` and releasing locked capacity.
+   - Order status transitions: `Paid`, `Purchasing`, or `Purchased` → `Disputed`.
+4. **UX Result**: Admin reviews communications and flight cancellation proof. Admin triggers manual refund to shopper, transitioning status to `Cancelled` → `Refunded` and releasing locked capacity.
 
 ---
 
@@ -99,13 +99,14 @@ Disputes raised after domestic shipping has initiated.
 
 ```mermaid
 flowchart TD
-    E1[Order Status: Paid] --> E2{Traveler Purchase}
+    E1[Order Status: Paid] --> E1b[Status: Purchasing]
+    E1b --> E2{Traveler Purchase}
     
     E2 -->|Item Out of Stock| E3[Traveler Clicks: Mark Out of Stock]
     E3 --> E4[Status: Cancelled & Capacity Released]
-    E4 --> E5[Admin Refund Queue]
-    E5 --> E6[Admin Approves Refund to Shopper]
-    E6 --> E7([End: Refunded])
+    E4 --> E5[Refund Processed]
+    E5 --> E6[Status: Refunded]
+    E6 --> E7([End])
 
     E2 -->|Item Purchased| E8[Status: Purchased]
     E8 --> E9[Traveler Returns & Ships Item]
@@ -122,7 +123,7 @@ flowchart TD
     
     E16 --> E17{Admin Verdict}
     E17 -->|Traveler Fault| E18[Trigger Escrow Refund to Shopper]
-    E18 --> E7
+    E18 --> E6
     E17 -->|Traveler Fulfilled Correctly| E19[Trigger Escrow Release to Traveler]
     E19 --> E12
 ```

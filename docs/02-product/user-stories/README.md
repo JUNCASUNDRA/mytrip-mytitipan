@@ -1,6 +1,6 @@
-# User Stories
+# User Stories Specification
 
-> Kumpulan user stories diorganisasi per Epic.
+> Kumpulan user stories diorganisasi berdasarkan Aktor (Traveler, Shopper, Admin).
 
 ## Format
 
@@ -17,21 +17,38 @@ Setiap file user story di folder ini mengikuti format:
 - **Story ID**: US-[Epic]-[Number]
 - **Priority**: Must / Should / Could / Won't
 - **Story Points**: 1 / 2 / 3 / 5 / 8 / 13
-- **Acceptance Criteria**: Given-When-Then format
-- **Dependencies**: Related stories
-
-## Epic Index
-
-| Epic | Description | Status |
-| :--- | :--- | :--- |
-| [EP-001: Authentication & Onboarding](ep-001-authentication.md) | Login and Registration via OTP or Google | 📝 Draft |
-| [EP-002: Trip Planner & Capacity](ep-002-trip-planner.md) | Trip creation, Traveler Profiles, baggage slots capacity controls | 📝 Draft |
-| [EP-003: Product Request Form](ep-003-product-request.md) | Structured item request templates for shoppers | 📝 Draft |
-| [EP-004: Quotation & Expiry](ep-004-quotation.md) | Price quoting engine, 24h auto-expiry rules | 📝 Draft |
-| [EP-005: Order & Admin Management](ep-005-order-management.md) | 8-state tracking, reviews system, admin overview dashboard | 📝 Draft |
-| [EP-006: Escrow Integration](ep-006-escrow-payment.md) | Virtual Account / E-Wallet payments and payouts | 📝 Draft |
+- **Acceptance Criteria**: Given-When-Then format (Gherkin syntax)
 
 ---
 
-> **Input dari**: [PRD](../prd.md), [User Persona](../user-persona.md), [User Journey](../user-journey.md)
-> **Output ke**: [Use Cases](../use-cases/), [Test Cases](../../05-testing/test-cases/)
+## User Stories Index
+
+### 👥 Traveler User Stories (Supply Side)
+
+| File | Story ID | Description | Priority |
+| :--- | :--- | :--- | :--- |
+| **[create-trip.md](traveler/create-trip.md)** | `US-002-001` | Publish trip details and travel dates | Must Have |
+| | `US-002-002` | Manage baggage capacity automatically | Must Have |
+| | `US-002-003` | View traveler profile with ratings | Must Have |
+| **[review-request.md](traveler/review-request.md)** | `US-005-001` | Track incoming requests and active order list | Must Have |
+| **[send-quote.md](traveler/send-quote.md)** | `US-004-001` | Create and send quotation to shopper | Must Have |
+| | `US-004-002` | Auto-expire quote after 24 hours | Must Have |
+| | `US-004-003` | Receive notification for escrow payment success | Must Have |
+| | `US-005-005` | Sourcing & mark as purchased with optional receipt | Must Have |
+
+### 👥 Shopper User Stories (Demand Side)
+
+| File | Story ID | Description | Priority |
+| :--- | :--- | :--- | :--- |
+| **[submit-request.md](shopper/submit-request.md)** | `US-001-001` | User registration via Google OAuth or OTP | Must Have |
+| | `US-001-002` | User login validation | Must Have |
+| | `US-003-001` | Submit structured product request on trip page | Must Have |
+| **[pay-order.md](shopper/pay-order.md)** | `US-006-001` | Pay and fund the quote via escrow gateway | Must Have |
+| **[confirm-delivery.md](shopper/confirm-delivery.md)** | `US-005-002` | Confirm receipt and release escrow funds | Must Have |
+| | `US-005-003` | Submit traveler review and rating | Must Have |
+
+### ⚙️ Admin User Stories (Operations)
+
+| File | Story ID | Description | Priority |
+| :--- | :--- | :--- | :--- |
+| **[review-dispute.md](admin/review-dispute.md)** | `US-005-004` | Monitor transaction metrics and trigger override refunds | Must Have |

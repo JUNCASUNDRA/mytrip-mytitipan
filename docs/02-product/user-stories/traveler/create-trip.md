@@ -1,14 +1,27 @@
-# Epic 002: Trip Planner & Capacity
+---
+agent: Product Manager Agent (PMA)
+version: 1.1.0
+date: 2026-06-14
+status: Draft
+predecessor: docs/02-product/user-stories/ep-002-trip-planner.md
+outputs:
+  - traveler-trip-stories
+depends_on:
+  - state-machine.md
+---
 
-> **Status**: 📝 Draft
-> **Sprint**: TBD
+# Traveler User Stories - Trip Creation & Profile
+
+> **Status**: 📝 Draft **Last Updated**: 2026-06-14
+
+This document captures the user stories related to trip publication, baggage capacity setup, and public profiles for travelers.
 
 ---
 
 ## US-002-001: Publish Trip
 
 **As a** Traveler,
-**I want to** publish my upcoming trip details (destination, travel dates, available capacity status),
+**I want to** publish my upcoming trip details (destination, travel dates, available capacity),
 **So that** shoppers can know when and where I am traveling and submit requests.
 
 | Attribute | Value |
@@ -23,12 +36,12 @@ Scenario: Successful trip publication
   Given I am logged in as a Traveler
   When I navigate to "Create Trip"
   And I enter a valid Destination (e.g., Tokyo)
-  And I enter valid departure and return dates
+  And I enter valid departure and return dates (must be in the future)
   And I set my initial baggage capacity
   And I click "Publish"
   Then the trip should be registered in the system with status "Open"
   And the system should generate a unique shareable link (e.g., mytrip.com/t/budi-tokyo-24)
-  And I should see a success message with copyable link
+  And I should see a success message with a copyable link
 
 Scenario: Attempt trip publication with invalid dates
   Given I am logged in as a Traveler
@@ -103,8 +116,3 @@ Scenario: View traveler profile via shareable link
     | Ratings & Reviews | Star rating average and text feedback history |
   And I should see the Trip destination, travel dates, and status (Open / Limited / Full)
 ```
-
----
-
-> **Total Story Points**: 15
-> **Related Use Cases**: [UC-002](use-cases/use-case-specifications.md#uc-002-publish-trip), [UC-003](use-cases/use-case-specifications.md#uc-003-view-traveler-profile--trip-page), [UC-006](use-cases/use-case-specifications.md#uc-006-manage-baggage-capacity-reserve--lock)

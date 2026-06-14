@@ -1,7 +1,20 @@
-# Epic 006: Escrow Integration
+---
+agent: Product Manager Agent (PMA)
+version: 1.1.0
+date: 2026-06-14
+status: Draft
+predecessor: docs/02-product/user-stories/ep-006-escrow-payment.md
+outputs:
+  - shopper-payment-stories
+depends_on:
+  - state-machine.md
+---
 
-> **Status**: 📝 Draft
-> **Sprint**: TBD
+# Shopper User Stories - Escrow Payment
+
+> **Status**: 📝 Draft **Last Updated**: 2026-06-14
+
+This document captures the user stories related to shopper funding and payment checkout via escrow gateway integration.
 
 ---
 
@@ -29,9 +42,12 @@ Scenario: Successful payment funds escrow
   And the system should lock IDR 350,000 in the platform's Escrow account
   And the order status should change to "Paid"
   And Budi (Traveler) should receive a confirmation notification to purchase the item
+
+Scenario: Failed or expired payment transitions to Expired
+  Given I am logged in as a Shopper
+  And I have a quote from Budi for "Tokyo Banana Classic" (IDR 350,000) in status "Payment Pending"
+  When the payment gateway session fails or expires
+  Then the platform should receive a failed/expired webhook from Xendit/Midtrans
+  And the order status should change to "Expired"
+  And the system should release the reserved baggage capacity of Budi's trip
 ```
-
----
-
-> **Total Story Points**: 5
-> **Related Use Cases**: [UC-007](use-cases/use-case-specifications.md#uc-007-pay-via-escrow)
