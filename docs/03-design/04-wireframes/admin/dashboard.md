@@ -3,11 +3,11 @@ agent: UX Designer Agent (UXA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/wireframes/README.md
+predecessor: docs/03-design/04-wireframes/README.md
 outputs:
   - scr-012-spec
 depends_on:
-  - user-stories/admin/review-dispute.md
+  - docs/02-product/user-stories/admin/review-dispute.md
 ---
 
 # SCR-012: Admin Dashboard
@@ -65,5 +65,5 @@ This is a desktop-first management dashboard layout allowing platform administra
 
 ## 4. Traceability
 
-* **User Story:** [US-005-004](../user-stories/admin/review-dispute.md#us-005-004-admin-dashboard--override-controls)
-* **Requirement:** [Admin Dashboard specification](../../02-product/requirements/feature-requirements.md#10-admin-dashboard--exception-handling)
+* **User Story:** [US-005-004](../../../../02-product/user-stories/admin/review-dispute.md#us-005-004-admin-dashboard--override-controls)
+* **Requirement:** [Admin Dashboard specification](../../../02-product/requirements/feature-requirements.md#10-admin-dashboard--exception-handling)

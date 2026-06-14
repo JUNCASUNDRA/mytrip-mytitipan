@@ -3,11 +3,11 @@ agent: UX Designer Agent (UXA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/wireframes/README.md
+predecessor: docs/03-design/04-wireframes/README.md
 outputs:
   - scr-013-spec
 depends_on:
-  - user-stories/admin/review-dispute.md
+  - docs/02-product/user-stories/admin/review-dispute.md
 ---
 
 # SCR-013: Admin Dispute Manager
@@ -81,5 +81,5 @@ This desktop-first administration panel details disputed transaction parameters,
 
 ## 4. Traceability
 
-* **User Story:** [US-005-004](../user-stories/admin/review-dispute.md#us-005-004-admin-dashboard--override-controls)
-* **Requirement:** [Dispute Management and overrides](../../02-product/requirements/feature-requirements.md#10-admin-dashboard--exception-handling)
+* **User Story:** [US-005-004](../../../../02-product/user-stories/admin/review-dispute.md#us-005-004-admin-dashboard--override-controls)
+* **Requirement:** [Dispute Management and overrides](../../../02-product/requirements/feature-requirements.md#10-admin-dashboard--exception-handling)

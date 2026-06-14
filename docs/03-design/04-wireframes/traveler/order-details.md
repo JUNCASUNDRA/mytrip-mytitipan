@@ -3,11 +3,11 @@ agent: UX Designer Agent (UXA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/wireframes/README.md
+predecessor: docs/03-design/04-wireframes/README.md
 outputs:
   - scr-010-spec
 depends_on:
-  - user-stories/traveler/send-quote.md
+  - docs/02-product/user-stories/traveler/send-quote.md
 ---
 
 # SCR-010: Traveler Order Details
@@ -90,5 +90,5 @@ This screen contains the traveler order details, including buyer contact info, v
 
 ## 4. Traceability
 
-* **User Story:** [US-005-005](../user-stories/traveler/send-quote.md#us-005-005-procure--purchase-item)
-* **Requirement:** [Procurement and Delivery specifications](../../02-product/requirements/feature-requirements.md#4-baggage-capacity-management)
+* **User Story:** [US-005-005](../../../../02-product/user-stories/traveler/send-quote.md#us-005-005-procure--purchase-item)
+* **Requirement:** [Procurement and Delivery specifications](../../../02-product/requirements/feature-requirements.md#4-baggage-capacity-management)

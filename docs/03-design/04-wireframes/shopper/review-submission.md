@@ -3,11 +3,11 @@ agent: UX Designer Agent (UXA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/03-design/wireframes/README.md
+predecessor: docs/03-design/04-wireframes/README.md
 outputs:
   - scr-011-spec
 depends_on:
-  - user-stories/shopper/confirm-delivery.md
+  - docs/02-product/user-stories/shopper/confirm-delivery.md
 ---
 
 # SCR-011: Review Submission
@@ -71,5 +71,5 @@ This screen contains the star selection and review feedback text form controls s
 
 ## 4. Traceability
 
-* **User Story:** [US-005-003](../user-stories/shopper/confirm-delivery.md#us-005-003-reviews--ratings-system)
-* **Requirement:** [Reviews & Ratings specification](../../02-product/requirements/feature-requirements.md#9-reviews--ratings-system)
+* **User Story:** [US-005-003](../../../../02-product/user-stories/shopper/confirm-delivery.md#us-005-003-reviews--ratings-system)
+* **Requirement:** [Reviews & Ratings specification](../../../02-product/requirements/feature-requirements.md#9-reviews--ratings-system)
