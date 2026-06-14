@@ -3,7 +3,7 @@ agent: Product Manager Agent (PMA)
 version: 1.1.0
 date: 2026-06-14
 status: Draft
-predecessor: docs/02-product/strategy/user-persona.md
+predecessor: docs/02-product/flows/transaction-flow.md
 ---
 
 # User Journeys

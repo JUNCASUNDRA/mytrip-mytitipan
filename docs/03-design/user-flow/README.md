@@ -3,7 +3,7 @@ agent: UX Designer Agent (UXA)
 version: 1.0.0
 date: 2026-06-09
 status: Draft
-predecessor: docs/02-product/planning/core-user-flow.md
+predecessor: docs/02-product/flows/transaction-flow.md
 ---
 
 # User Flow
@@ -30,7 +30,7 @@ Click the links below to view the specific flows and inventories:
 
 ## References
 
-*   [Core User Flow](file:///d:/mytrip-mytitipan/docs/02-product/planning/core-user-flow.md)
-*   [User Journeys](file:///d:/mytrip-mytitipan/docs/02-product/strategy/user-journey.md)
+*   [Transaction Flow](file:///d:/mytrip-mytitipan/docs/02-product/flows/transaction-flow.md)
+*   [User Journeys](file:///d:/mytrip-mytitipan/docs/02-product/flows/user-journey.md)
 *   [MVP Definition](file:///d:/mytrip-mytitipan/docs/02-product/planning/mvp-definition.md)
 *   [Feature Prioritization](file:///d:/mytrip-mytitipan/docs/02-product/planning/feature-prioritization.md)

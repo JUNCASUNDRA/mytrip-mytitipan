@@ -34,7 +34,6 @@ These are non-negotiable. Without these, the platform cannot facilitate a secure
 | **Reviews & Ratings** | Text reviews and star ratings. | Essential for trust since ID verification is deferred. |
 | **Basic Admin Dashboard** | Simple backend for admins to monitor transactions and active trips. | Essential for customer service and operational overview during launch. |
 | **Transaction Exception Handling** | Admin can manually review paid transactions and resolve exceptional cases. | Ensures dispute resolution and refund safety for early transactions. |
-| **Basic Transaction Notifications** | Email notification only for critical events: Quote received, Payment successful, Item purchased, Shipment created, Delivery confirmed. | Keeps users updated on transaction milestones without manual polling. |
 
 ## 2. Should Have (V1.1 - Month 4)
 
@@ -42,6 +41,7 @@ These add significant value but are not strictly required for the first 100 tran
 
 | Feature | Description | Reason |
 | --- | --- | --- |
+| **Basic Transaction Notifications** | Email notification only for critical events: Quote received, Payment successful, Item purchased, Shipment created, Delivery confirmed. | Keeps users updated on transaction milestones without manual polling. |
 | **In-App & Push Notifications** | Push and in-app alerts for status changes. | Replaces email notification reliance and improves active mobile web engagement. |
 
 ## 3. Could Have (V2.0 - Month 5 to 6)

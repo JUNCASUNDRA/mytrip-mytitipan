@@ -42,18 +42,18 @@ All documentation is finalized and ready for **Gate 1 PMA Approval** and transit
 
 ## 3. Deliverables Produced
 
-The following files have been modified and synchronized:
-*   **[core-user-flow.md](file:///d:/mytrip-mytitipan/docs/02-product/planning/core-user-flow.md)**: Updated steps and request/fulfillment lifecycle definitions.
-*   **[feature-prioritization.md](file:///d:/mytrip-mytitipan/docs/02-product/planning/feature-prioritization.md)**: Standardized front matter metadata (outputs/depends_on), updated quotation, capacity, and escrow priorities, added email notifications to Must Have, and partial payment to Won't Have.
-*   **[mvp-definition.md](file:///d:/mytrip-mytitipan/docs/02-product/planning/mvp-definition.md)**: Updated order status checklist.
-*   **[product-roadmap.md](file:///d:/mytrip-mytitipan/docs/02-product/planning/product-roadmap.md)**: Updated deliverables in roadmap.
-*   **[user-journey.md](file:///d:/mytrip-mytitipan/docs/02-product/strategy/user-journey.md)**: Integrated procurement and receipt upload stages.
-*   **[use-case-specifications.md](file:///d:/mytrip-mytitipan/docs/02-product/use-cases/use-case-specifications.md)**: Refined UC steps and added **UC-016 (Procure & Purchase Item)**.
-*   **[ep-004-quotation.md](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/ep-004-quotation.md)**: Adjusted quote capacity rules and notification channels.
-*   **[ep-005-order-management.md](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/ep-005-order-management.md)**: Added **US-005-005 (Procure & Purchase Item)**.
-*   **[ep-006-escrow-payment.md](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/ep-006-escrow-payment.md)**: Added webhook failure transition scenario.
-*   **[order-lifecycle.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/order-lifecycle.md)**: Updated design status transition matrix and diagrams.
-*   **[exception-flows.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/exception-flows.md)**: Updated scenarios and exceptions flowchart.
+The following files have been modified, reorganized, and synchronized:
+*   **[transaction-flow.md](file:///d:/mytrip-mytitipan/docs/02-product/flows/transaction-flow.md)** [NEW]: Core end-to-end transaction flow, including auth prompts, capacity rules, and status definitions.
+*   **[user-journey.md](file:///d:/mytrip-mytitipan/docs/02-product/flows/user-journey.md)** [MOVED]: Reorganized traveler and shopper journeys.
+*   **[feature-prioritization.md](file:///d:/mytrip-mytitipan/docs/02-product/planning/feature-prioritization.md)**: Updated MoSCoW prioritization schema.
+*   **[mvp-definition.md](file:///d:/mytrip-mytitipan/docs/02-product/planning/mvp-definition.md)**: Refined MVP boundaries and added state tracking implementation notes.
+*   **[product-roadmap.md](file:///d:/mytrip-mytitipan/docs/02-product/planning/product-roadmap.md)**: Aligned lifecycle tracking stages.
+*   **[use-case-specifications.md](file:///d:/mytrip-mytitipan/docs/02-product/use-cases/use-case-specifications.md)**: Updated system triggers and added UC-016.
+*   **[ep-004-quotation.md](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/ep-004-quotation.md)**: Aligned epic story structures.
+*   **[ep-005-order-management.md](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/ep-005-order-management.md)**: Incorporated US-005-005.
+*   **[ep-006-escrow-payment.md](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/ep-006-escrow-payment.md)**: Added gateway failure pathways.
+*   **[order-lifecycle.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/order-lifecycle.md)**: Synced status timelines and transition states.
+*   **[exception-flows.md](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/exception-flows.md)**: Refined dispute and exception flowcharts.
 
 ---
 

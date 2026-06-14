@@ -4,13 +4,18 @@ version: 1.1.0
 date: 2026-06-14
 status: Draft
 predecessor: docs/01-business/04-business-flow/customer-journey.md
+outputs:
+  - transaction-processes
+  - state-transitions
+depends_on:
+  - product-vision.md
 ---
 
-# Core User Flow (MVP)
+# End-to-End Transaction Flow (MVP)
 
 > **Status**: 📝 Draft **Last Updated**: 2026-06-14
 
-This document maps the exact click-path for the core features defined in the MVP. It serves as the foundation for wireframes and engineering architecture.
+This document maps the exact transaction processes and state transitions for the core features defined in the MVP. It serves as the foundation for wireframes and engineering architecture.
 
 ## The End-to-End Transaction Flow
 
@@ -35,7 +40,7 @@ This document maps the exact click-path for the core features defined in the MVP
    - Travel deadline
    - Remaining baggage capacity status (Open / Limited / Full)
    - Request CTA
-3. **Submit Request:** Shopper clicks "Request Item" → Uploads photo, adds URL, sets maximum price/budget.
+3. **Submit Request:** Shopper clicks "Request Item" → System prompts for Authentication (if not logged in) → Shopper authenticates → Shopper uploads photo, adds URL, sets maximum price/budget.
 4. **Wait State:** Shopper is notified that the request has been submitted and is waiting for the traveler's review/quotation.
 
 ### Step 3: Matching & Quotation (Traveler)
@@ -87,9 +92,25 @@ This lifecycle defines all possible states during the transaction flow, split in
 | **Expired** | Request | Quote expired or payment failed/expired | 24-hour timer expires OR gateway sends Failed/Expired status callback (capacity released) |
 | **Cancelled** | Both | Request declined or manual cancel | Traveler declines request (pre-quote) OR Admin overrides cancellation |
 | **Paid** | Fulfillment | Escrow funded successfully | Shopper completes payment (capacity lock confirmed, payment gateway Success callback) |
-| **Purchasing** | Fulfillment | Traveler is procurement processing | Traveler begins travel/shopping |
-| **Purchased** | Fulfillment | Item purchased by traveler | Traveler marks as Purchased (optional receipt upload) |
+| **Purchasing** | Fulfillment | Traveler is expected to buy the item | Traveler begins travel/shopping |
+| **Purchased** | Fulfillment | Traveler confirms the item has been bought | Traveler marks as Purchased (optional receipt upload) |
 | **In Transit** | Fulfillment | Shipped to shopper | Traveler ships and inputs tracking number |
 | **Delivered** | Fulfillment | Shopper received item | Shopper clicks "Confirm Receipt" |
 | **Completed** | Fulfillment | Escrow released | Funds payout to traveler (manual confirm or 7-day auto-release) |
 | **Refunded** | Exception | Payment returned to shopper | Admin triggers escrow refund after cancellation/dispute resolution |
+
+### Procurement Status Definitions
+
+| Status | Meaning |
+| --- | --- |
+| **Purchasing** | Traveler is expected to buy the item (traveling or procurement phase) |
+| **Purchased** | Traveler confirms the item has been bought (receipt/photo verification upload optional) |
+
+---
+
+## Capacity Reservation Rules
+
+Baggage slot capacities are managed as follows:
+- **Quote Creation**: When the traveler creates and sends a quote, the system temporarily holds/reserves the estimated capacity (starts a 24-hour timer).
+- **Payment Success**: When the shopper completes the payment, the capacity becomes permanently deducted/locked.
+- **Quote Expiration / Payment Expiry**: If the quote is unpaid after 24 hours, or the payment gateway transaction fails/expires, the capacity is automatically returned to the available pool.

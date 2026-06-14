@@ -21,21 +21,25 @@ Defines the product vision, MVP scope boundaries, core user flows, and user stor
 | 1 | [Product Vision](strategy/product-vision.md) | 📝 Draft | Vision and direction of the product |
 | 2 | [User Persona](strategy/user-persona.md) | 📝 Draft | User profiles of our target audience |
 | 3 | [User Segmentation](strategy/user-segmentation.md) | 📝 Draft | Market segmentation of target users |
-| 4 | [User Journey](strategy/user-journey.md) | 📝 Draft | End-to-end customer journey map |
+
+### Flows
+| # | Document | Status | Description |
+|---|----------|--------|-------------|
+| 1 | [Transaction Flow](flows/transaction-flow.md) | 📝 Draft | Core transactional business process flows |
+| 2 | [User Journey](flows/user-journey.md) | 📝 Draft | End-to-end customer journey map |
 
 ### Planning
 | # | Document | Status | Description |
 |---|----------|--------|-------------|
 | 1 | [MVP Definition](planning/mvp-definition.md) | 📝 Draft | Definition of MVP scope boundaries |
 | 2 | [Feature Prioritization](planning/feature-prioritization.md) | 📝 Draft | Feature prioritization list (MoSCoW) |
-| 3 | [Core User Flow](planning/core-user-flow.md) | 📝 Draft | Core transactional user interaction flows |
-| 4 | [Product Roadmap](planning/product-roadmap.md) | 📝 Draft | Product release and milestone roadmap |
+| 3 | [Product Roadmap](planning/product-roadmap.md) | 📝 Draft | Product release and milestone roadmap |
 
 ### Requirements & Specifications
 | # | Document | Status | Description |
 |---|----------|--------|-------------|
 | 1 | [User Stories](user-stories/) | 📝 Draft | Epics and user stories backlog |
-| 2 | [Use Cases](use-cases/) | 📝 Draft | Detailed use case specifications |
+| 2 | [Use Cases](use-cases/use-case-specifications.md) | 📝 Draft | Detailed use case specifications |
 
 ---
 
@@ -43,7 +47,7 @@ Defines the product vision, MVP scope boundaries, core user flows, and user stor
 
 ```
 Product Vision → User Persona & Segmentation → User Journey → MVP Definition 
-→ Core User Flow → Feature Prioritization → Product Roadmap → User Stories & Use Cases
+→ Transaction Flow → Feature Prioritization → Product Roadmap → User Stories & Use Cases
 ```
 
 ## Relationship to Other Docs

@@ -134,6 +134,9 @@ The platform tracks order progress through the following statuses:
 - Delivered
 - Completed
 
+> **Implementation Note:**
+> MVP requires state transition tracking, not a fully optimized workflow UI.
+
 **Purpose:** Provides transparency throughout the transaction lifecycle.
 
 ---
