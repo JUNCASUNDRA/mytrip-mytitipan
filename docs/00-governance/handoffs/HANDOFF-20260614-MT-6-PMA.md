@@ -25,6 +25,8 @@ All documentation is finalized and ready for **Gate 1 PMA Approval** and transit
 
 ## 2. Key Decisions
 
+*   **Validation Metrics**: Added explicit metrics to validate the core hypothesis (quotation success rates, escrow payment completion rates, repeat usage metrics).
+*   **Traveler Profile & Trip Page Separation**: Split Traveler Profile (social proof, ratings, reviews) and Traveler Trip Page (route details, timelines, status CTAs) to align database design abstractions.
 *   **Quotation Request Review**: Clarified that travelers must first review incoming requests before accepting and generating quotes, preventing forced quoting on high-volume requests.
 *   **Refined Capacity Wording**: Capacity management logic explicitly details that reservation occurs when quotes are sent (expiring in 24 hours), and baggage slots are strictly locked only post-payment.
 *   **Payment Gateway Direct Expiry**: Refined checkout flows to transition directly from `Payment Pending` to `Expired` upon gateway webhook callbacks for failures/expirations, rather than remaining open.
@@ -34,6 +36,7 @@ All documentation is finalized and ready for **Gate 1 PMA Approval** and transit
 *   **Traveler Identity Verification (KYC)**: Positioned KYC strictly as a "V2 Trust Enhancement" under the "Could Have" scope, aligned with the invisible trust strategy.
 *   **Escrow-Style Messaging**: Adjusted wording around payment gateway to "escrow-style fund holding workflow" to match Indonesian payment standards.
 *   **Strict Scope on Partial Payments**: Explicitly deferred **Partial Payment** or deposits to the "Won't Have" category to prevent developers from adding premature financial schema complexities.
+*   **Manual Exception Handling**: Formally documented transaction exceptions (out-of-stock, cancellations, refunds, shipping issues) to provide a manual safety net for disputes.
 
 ---
 
