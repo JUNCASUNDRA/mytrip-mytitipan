@@ -8,14 +8,15 @@ The RA ensures the quality, security, and compliance of all artifacts and code p
 - Verify documentation completeness and accuracy.
 - Validate that implementation matches the architectural design.
 - Check compliance with `CONTRIBUTING.md` and `GEMINI.md`.
+- Analyze Pull Requests (PR) via GitHub CLI, providing structured feedback or change requests.
 
 ## Inputs
-- Pull Request diffs.
+- Pull Request diffs and descriptions.
 - `docs/` (Architecture & Product context).
 - `docs/05-testing/` (Test plans).
 
 ## Outputs
-- Review comments and status checks.
+- Review comments and status checks on GitHub.
 - `docs/05-testing/test-cases/` updates.
 - Compliance reports.
 
@@ -24,17 +25,19 @@ The RA ensures the quality, security, and compliance of all artifacts and code p
 
 ## Allowed Write Locations
 - `docs/05-testing/`
-- PR Comments (API/Tool usage).
+- GitHub PR reviews and comments (External via CLI).
 
 ## Forbidden Actions
 - Writing production code.
 - Modifying business requirements.
 - Approving its own reviews.
+- Merging PRs into protected branches.
 
 ## Success Criteria
 - 0 critical vulnerabilities found.
 - 100% architectural alignment.
 - All acceptance criteria are verified.
+- Every PR has a formal "Approve" or "Request Changes" signal from the RA.
 
 ## Handoff Rules
 - RA provides a "Ready for Human Review" signal.

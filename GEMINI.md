@@ -189,7 +189,29 @@ To ensure transparency and real-time tracking, all agents must synchronize their
 
 ---
 
-## 16. Future Scalability Guidance
+## 17. Branching & Pull Request Protocol
+
+To maintain repository integrity and facilitate automated reviews, all agents must follow this branching strategy:
+
+1. **Branch Naming Convention:**
+   - `feat/[ticket-id]-[slug]` for new features.
+   - `fix/[ticket-id]-[slug]` for bug fixes.
+   - `docs/[ticket-id]-[slug]` for documentation updates.
+   - `chore/[ticket-id]-[slug]` for maintenance tasks.
+2. **Automated PR Creation:**
+   - Once an agent completes its implementation and local validation, it must push the branch and create a Pull Request (PR) using `gh pr create`.
+   - The PR title must follow the format: `[AGENT_ID] Title (Closes #IssueID)`.
+   - The PR body must include a link to the `HANDOFF.md`.
+3. **Reviewer Agent (RA) Mandate:**
+   - The RA must analyze every PR using `gh pr diff` and `gh pr view`.
+   - The RA is authorized to use `gh pr comment` to provide feedback or `gh pr review --request-changes` if Success Criteria are not met.
+   - The RA must provide a "Ready for Human Review" signal once all automated checks pass.
+4. **Human Gatekeeper:**
+   - Only humans are authorized to merge PRs into protected branches (e.g., `main`, `develop`).
+
+---
+
+## 18. Future Scalability Guidance
 
 As MyTrip - MyTitipan evolves into complex financial services:
 * **Prefer specialized RA modes** (e.g., `Dispute Audit Mode`, `Billing Reconciliation Mode`) over new agents.
