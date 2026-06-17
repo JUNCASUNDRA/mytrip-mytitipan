@@ -11,56 +11,53 @@ predecessor: docs/02-product/planning/feature-prioritization.md
 > **Status**: 📝 Draft
 > **Last Updated**: 2026-06-14
 
-This roadmap aligns engineering effort with the Go-To-Market strategy, focusing heavily on a lean 3-month MVP launch.
+This roadmap aligns engineering effort with the Go-To-Market strategy, focusing heavily on a lean 3-month MVP launch of the simplified Record-Keeping and Trip Coordination Tool.
 
-## Month 1: Foundation & Supply Core
-**Goal:** Build the tools for Travelers to publish trips and Shoppers to request items.
+## Month 1: Foundation & Profile Core
+**Goal:** Build the essential user accounts, traveler profiles, and trip sharing capabilities.
 
 * **Tech:** Auth setup (OTP / Google), Database schema, Cloud infrastructure.
 * **Product:**
-  * Trip Publisher (URL Generation).
-  * Traveler Profile (displaying name, photo, reviews, and completed counts).
-  * Product Request Form.
-  * Admin Dashboard (basic transaction and trip overview).
+  * Trip Publisher (destination, travel dates, optional baggage notes).
+  * Unique shareable trip URL generation.
+  * Traveler Profile (displaying name, photo, completed trips count, completed requests count, ratings/reviews history).
 
-## Month 2: Transaction Engine
-**Goal:** Enable secure matching and payment.
+## Month 2: Sourcing & Request Core
+**Goal:** Build the shopper product request form and traveler incoming request tracker.
 
-* **Tech:** Payment Gateway Integration (Escrow holding logic).
+* **Tech:** Request database records, status schema, notification templates.
 * **Product:**
-  * Quotation Engine.
-  * Capacity Management (baggage slot tracking, capacity reservation).
-  * Quote Expiry (24-hour auto-release of reserved capacity).
-  * Escrow Integration.
-  * Checkout Flow (Shopper funding Escrow).
+  * Structured Product Request Form (item name, product URL, reference photo, quantity, notes; no budget inputs).
+  * Traveler incoming request list dashboard.
+  * Traveler manually accepts requests (Requested → Accepted).
 
-## Month 3: Fulfillment & Launch
-**Goal:** Complete the loop and launch the constrained MVP (Japan ↔ Indonesia route).
+## Month 3: Sourcing & Delivery
+**Goal:** Complete the request lifecycle and enable user feedback.
 
-* **Tech:** Payout logic (releasing funds to Traveler).
+* **Tech:** Simple status state transition mechanics, review submission endpoints.
 * **Product:**
-  * Order Tracking Dashboard (Requested → Quoted → Payment Pending → Paid → Purchasing → Purchased → In Transit → Delivered → Completed).
-  * Email Notifications (automated status updates).
+  * Sourcing status updates (Traveler marks as Purchased).
+  * Dispatch status updates (Traveler marks as Delivered).
+  * Shopper receipt confirmation (transitions request to Completed).
   * Reviews & Ratings System (text reviews and star ratings).
-  * QA & Security Audit.
-* **Milestone:** **MVP Public Launch (Constrained to 50 subsidized Travelers; Japan ↔ Indonesia route)**.
+* **Milestone:** **MVP Public Launch (Constrained to early adoption validation on Indonesia ↔ Japan route)**.
 
 ---
 
-## Month 4: Friction Reduction (V1.1)
-**Goal:** Listen to the first 100 transactions and reduce manual friction.
+## Month 4: Transaction & Escrow (V1.5)
+**Goal:** Introduce transaction security and escrow payments.
 
 * **Product:**
-  * Push Notifications.
-  * Better Admin Reporting.
-  * Operational Tools.
+  * Payment Gateway Integration (Xendit/Midtrans invoice generation and webhooks).
+  * Escrow fund locking mechanics.
+  * Automated 24h payment window expiration.
+  * Basic transaction email notifications.
 
-## Month 5-6: Liquidity & Discovery (V2)
-**Goal:** Shift from link-based sharing to internal platform discovery.
+## Month 5-6: Liquidity & Operations (V2.0)
+**Goal:** Expand features to reduce operational friction and grow matching liquidity.
 
 * **Product:**
   * Destination Discovery Feed (Browse active trips by city).
-  * Creator Storefronts (Curated item lists).
+  * Creator Storefronts (Curated item recommendation lists).
   * Traveler Identity Verification (KYC submission and approval workflow).
-  * Logistics Integration (Auto-Generated AWB for JNE/GoSend shipping labels).
-* **Milestone:** Expand routes to South Korea and Singapore.
+  * Logistics Integration (Courier API integration & auto-generated shipping labels).

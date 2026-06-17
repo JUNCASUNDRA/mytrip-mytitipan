@@ -2,19 +2,21 @@
 agent: Product Manager Agent (PMA)
 version: 1.1.0
 date: 2026-06-14
-status: Draft
-predecessor: docs/02-product/user-stories/ep-003-product-request.md
-outputs:
-  - shopper-request-stories
+phase: phase-1
+status: approved
+priority: must-have
 depends_on:
-  - state-machine.md
+  - docs/02-product/flows/core-user-flow.md
+outputs:
+  - ux-flow
+  - technical-requirement
 ---
 
-# Shopper User Stories - Product Request & Onboarding
+# Shopper User Stories - Registration & Request Form
 
-> **Status**: 📝 Draft **Last Updated**: 2026-06-14
+> **Status**: Approved **Last Updated**: 2026-06-14
 
-This document captures the user stories related to shopper account registration, login, profile onboarding, and product request submission.
+This document captures the shopper stories related to account registration, login, and request form submission.
 
 ---
 
@@ -105,10 +107,9 @@ Scenario: Successful product request submission
     | Reference URL | https://tokyobanana.jp/classic |
     | Photo Upload | tokyo_banana.jpg |
     | Quantity | 2 |
-    | Willingness to Pay | IDR 350,000 |
+    | Notes | "Please check expiration dates, thank you!" |
   And I click "Submit Request"
   Then the request should be saved with status "Requested"
-  And the Traveler (Budi) should receive an email notification for a new request
   And I should see the request in my "My Requests" dashboard
 
 Scenario: Attempt product request without logging in
