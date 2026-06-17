@@ -26,12 +26,12 @@ Follow the reading order below to understand the project comprehensively, from t
 - [Use Cases Directory](file:///d:/mytrip-mytitipan/docs/02-product/use-cases/README.md) — Detailed actor-based use case specifications.
 - [User Stories](file:///d:/mytrip-mytitipan/docs/02-product/user-stories/README.md) — Collection of user stories by Epic.
 
-### 3. [🎨 Design (03-design)](file:///d:/mytrip-mytitipan/docs/03-design/README.md)
+### 3. [🎨 Design (03-design)](docs/03-design/README.md)
 *Contains visual architecture guidelines, user interface (UI/UX) designs, and supporting assets.*
-- [User Flow Diagram](file:///d:/mytrip-mytitipan/docs/03-design/user-flow/README.md) — Screen-by-screen visual interaction flow.
-- [Wireframes Index](file:///d:/mytrip-mytitipan/docs/03-design/wireframes/README.md) — Low-fidelity visual layout sketches.
-- [Mockups Index](file:///d:/mytrip-mytitipan/docs/03-design/mockups/README.md) — High-fidelity final visual designs.
-- [Usability Testing Logs](file:///d:/mytrip-mytitipan/docs/03-design/usability-testing/README.md) — User usability tests and validation results.
+- [User Flow Diagram](docs/03-design/phases/phase-1-foundation/user-flow/lifecycle.md) — Screen-by-screen visual interaction flow.
+- [Wireframe Requirements](docs/03-design/phases/phase-1-foundation/wireframe-requirements.md) — Low-fidelity visual layout sketches and requirements.
+- [Mockups Index](docs/03-design/mockups/README.md) — High-fidelity final visual designs.
+- [Usability Testing Logs](docs/03-design/ux-research/usability-testing.md) — User usability tests and validation results.
 
 ### 4. [🔧 Technical (04-technical)](file:///d:/mytrip-mytitipan/docs/04-technical/README.md)
 *System architecture, database designs, API specifications, and security decisions.*
