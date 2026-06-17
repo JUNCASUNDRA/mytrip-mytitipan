@@ -1,58 +1,36 @@
-# 🎨 Design Documentation
+# Design Documentation (03-design)
 
-## Purpose
+This directory contains the visual architecture, user interface (UI/UX) designs, and assets for the My Trip My Titipan platform.
 
-Stores all visual design assets and guidelines (UI/UX), ranging from screen flow diagrams, wireframes, interactive prototypes, final mockups, and the design system.
+## Directory Structure
 
-## Rules
+| Folder | Description |
+| :--- | :--- |
+| **[phases/](phases/)** | **Core UX Specs grouped by launch phase (Phase 1, 2, 3).** |
+| [design-system/](design-system/) | Design tokens, Foundations, Typography, and UI Components. |
+| [information-architecture/](information-architecture/) | Navigation maps and application routing. |
+| [ux-research/](ux-research/) | Core design principles, assumptions, and usability logs. |
+| [mockups/](mockups/) | High-fidelity visual interface designs and screenshots. |
+| [ui-assets/](ui-assets/) | Icons, brand illustrations, and image assets. |
 
-- **Mobile-First Design:** Since the application heavily targets mobile users, all interface designs must prioritize mobile layouts before designing desktop/tablet versions.
-- **Design System Consistency:** Standardized colors, typography, grids, and UI components from the `design-system/` folder must be used.
-- **Standardized Visual Assets:** All images must use WebP/PNG formats, and icons must be clean SVGs with structured naming conventions.
-- **Iterative Feedback:** Ensure wireframes are reviewed and approved before moving to high-fidelity mockups.
+## UX Design Lifecycle
 
----
+The design process is segmented by development phases to ensure focused delivery:
 
-## Document Index
+1.  **[Phase 1: Foundation (Current)](phases/phase-1-foundation/)**: Lightweight request tracking and trip coordination.
+2.  **[Phase 2: Transaction](phases/phase-2-transaction/)**: Payment, escrow, and quotation engines.
+3.  **[Phase 3: Platform](phases/phase-3-platform/)**: Discovery, logistics APIs, and global scaling.
 
-| # | Folder | Description |
-|---|--------|-------------|
-| 1 | [UX Research](ux-research/) | Core design principles, pain points, and usability assumptions |
-| 2 | [Information Architecture](information-architecture/) | Navigation maps, site map routes, and screen inventory |
-| 3 | [User Flow](user-flow/) | Screen-by-screen user interaction flows and exception flows |
-| 4 | [Wireframes](wireframes/) | Low-fidelity visual layout sketches grouped by actor (`traveler`, `shopper`) |
-| 5 | [Mockups](mockups/) | High-fidelity visual interface designs and screenshots grouped by actor (`traveler`, `shopper`) |
-| 6 | [Design System](design-system/) | Design tokens, foundations, typography, and UI components |
-| 7 | [UI Assets](ui-assets/) | Icons, brand illustrations, and image assets |
+## Key Artifacts
 
----
-
-## Design Process
-
-```
-User Persona → User Journey → User Flow → Wireframe → Mockup → Prototype → Handoff
-     ↑              ↑            ↑           ↑          ↑          ↑          ↑
-  Product         Product      Design      Design     Design    Design     Design→Dev
-```
+- **[Phase 1 User Flow](phases/phase-1-foundation/user-flow/lifecycle.md)**: The five-stage status machine (`Requested` → `Accepted` → `Purchased` → `Delivered` → `Completed`).
+- **[Wireframe Requirements](phases/phase-1-foundation/wireframe-requirements.md)**: Screen-by-screen inventory for the Phase 1 launch.
+- **[Handoff Specification](HANDOFF.md)**: Master design contract and out-of-scope boundaries.
 
 ---
 
-## Tools & Standards
+## Design Principles
 
-| Aspect | Tool/Standard |
-|--------|--------------|
-| Design Tool | Figma |
-| Prototyping | Figma |
-| Handoff | Figma Dev Mode |
-| Icons | Custom / Lucide / Material Icons |
-| Illustrations | Custom |
-| Naming Convention | `[page]-[component]-[state]` |
-| File Format | SVG (icons), PNG/WebP (images) |
-
----
-
-## Relationship to Other Docs
-
-- **← Product**: User Persona & User Journey → User Flow
-- **→ Technical**: Design System → Frontend Components
-- **→ Testing**: Mockups → Visual Regression Tests
+1.  **Documentation First**: Every UI change must be preceded by a wireframe update.
+2.  **Mobile-First**: Primary user interaction happens via shared links on mobile devices.
+3.  **Trust-Centric**: Visual design must emphasize traveler history and request transparency.
