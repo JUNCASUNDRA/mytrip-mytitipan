@@ -2,64 +2,61 @@
 agent: Product Manager Agent (PMA)
 version: 1.1.0
 date: 2026-06-14
-status: Draft
-predecessor: docs/02-product/planning/mvp-definition.md
-outputs:
-  - feature-scope
-  - release-priorities
+phase: phase-1
+status: approved
+priority: must-have
 depends_on:
   - core-user-flow.md
+outputs:
+  - ux-flow
+  - technical-requirement
 ---
 
 # Feature Prioritization (MoSCoW)
 
-> **Status**: 📝 Draft **Last Updated**: 2026-06-14
+> **Status**: Approved **Last Updated**: 2026-06-14
 
-This document strictly prioritizes features based on the core MVP requirements. Any feature outside the "Must Have" list is explicitly deferred to ensure a 3-month launch window.
+This document strictly prioritizes features based on the Phase 1 MVP simplified requirements. Any feature outside the "Must Have" list is explicitly deferred to ensure a 3-month launch window and feasibility for a small engineering team.
 
-## 1. Must Have (MVP - Month 1 to 3)
+## 1. Must Have (Phase 1 MVP - Month 1 to 3)
 
-These are non-negotiable. Without these, the platform cannot facilitate a secure transaction.
+These are non-negotiable. Without these, the platform cannot function as a request-keeping coordination tool.
 
 | Feature | Description | Reason |
 | --- | --- | --- |
-| **Trip Publisher** | Travelers can input route/dates and get a shareable URL. | Creates the inventory. |
-| **Product Request Form** | Shoppers can upload photo, URL, and willing-to-pay budget. | Captures the demand. |
-| **Quotation Engine** | Travelers review incoming product requests and respond with a quotation containing Item Price + Jastip Fee. | Enables agreement on pricing. |
-| **Capacity Management** | Tracks traveler available capacity. When a quote is issued, requested capacity is temporarily reserved. Reservation becomes permanent after successful payment. | Prevents overbooking and enables multiple concurrent requests. |
-| **Quote Expiry & Capacity Release** | Automatically expires unpaid quotes and releases reserved capacity after 24 hours. Expired quotes cannot be paid unless traveler issues a new quote. | Prevents capacity from being locked indefinitely by unresponsive buyers. |
-| **Escrow Integration** | Payment Gateway integration with escrow-style fund holding workflow. | Solves the core "Hit and Run" trust issue. |
-| **Traveler Profiles** | Public profiles showing traveler name, photo, completed trips & orders count, and reviews. Reviews are generated only from completed transactions. | Builds initial trust through social proof and transaction history. |
-| **Order Lifecycle Tracking** | Tracks transaction states: Requested → Quoted → Payment Pending → Paid → Purchasing → Purchased → In Transit → Delivered → Completed. | Minimum required transparency. |
-| **Reviews & Ratings** | Text reviews and star ratings. | Essential for trust since ID verification is deferred. |
-| **Basic Admin Dashboard** | Simple backend for admins to monitor transactions and active trips. | Essential for customer service and operational overview during launch. |
-| **Transaction Exception Handling** | Admin can manually review paid transactions and resolve exceptional cases. | Ensures dispute resolution and refund safety for early transactions. |
+| **Trip Publisher** | Travelers can input travel destination, dates, optional notes and get a shareable URL. | Creates the supply loop. |
+| **Product Request Form** | Shoppers can upload photo, URL, item name, quantity, and notes. No budget or payment required. | Captures structured shopper demand. |
+| **Request Lifecycle Management** | Travelers review incoming requests and manually transition status: Requested → Accepted → Purchased → Delivered → Completed. | Replaces spreadsheets with a central tracking workflow. |
+| **Request Timeline** | Users can view state change history logs for trust. | Since escrow is out of scope, the timeline history serves as the primary trust verification loop. |
+| **Traveler Profile** | Public profiles showing traveler name, photo, trip history, request completion history, and reviews. | Builds trust through social proof and history instead of count indicators that start at 0. |
+| **Reviews & Ratings** | Star ratings (1-5) and written feedback, triggered when shopper marks request as completed. | Core mechanism to build reputation. |
+| **Simple Record History** | Persistent logs of completed requests and trip history. | Base database structure for future trust features. |
 
 ## 2. Should Have (V1.1 - Month 4)
 
-These add significant value but are not strictly required for the first 100 transactions.
+These add significant value but are not strictly required for the first 100 requests.
 
 | Feature | Description | Reason |
 | --- | --- | --- |
-| **Basic Transaction Notifications** | Email notification only for critical events: Quote received, Payment successful, Item purchased, Shipment created, Delivery confirmed. | Keeps users updated on transaction milestones without manual polling. |
-| **In-App & Push Notifications** | Push and in-app alerts for status changes. | Replaces email notification reliance and improves active mobile web engagement. |
+| **Basic Email Notifications** | Email notifications sent when order status changes (e.g. accepted, purchased, delivered). | Prevents users from needing to poll the platform. |
 
 ## 3. Could Have (V2.0 - Month 5 to 6)
 
-These features build the "Social Commerce" vision but are too risky/complex for MVP.
+| Feature | Description | Reason |
+| --- | --- | --- |
+| **In-App Notifications** | Native in-app notifications and badges. | Enhances mobile web user engagement. |
+
+## 4. Won't Have (Deferred Indefinitely / Future Phases)
+
+These features are explicitly removed from Phase 1 to minimize operational and engineering complexity.
 
 | Feature | Description | Reason |
 | --- | --- | --- |
-| **Auto-Generated AWB** | Integration with local logistics (JNE/GoSend) to print shipping labels. | Reduces Traveler admin burden; manual shipping is sufficient for early transactions. |
-| **Creator Storefronts** | Dedicated pages for "Jastip by Spot" curation. | Requires an existing baseline of reliable Travelers. |
-| **Destination Discovery Feed** | Algorithmic feed showing active trips. | Worthless until we have high route density (liquidity). |
-| **Traveler Identity Verification** | Admin approval workflow and ID upload. | Adds stronger trust verification after transaction liquidity is established. |
-
-## 4. Won't Have (Deferred Indefinitely)
-
-| Feature | Description | Reason |
-| --- | --- | --- |
-| **In-App Chat / Negotiation** | Direct messaging between Shopper and Traveler. | Causes scope creep (moderation, media storage). Structured forms solve the problem better. |
-| **Live Shopping** | Native video broadcasting. | Extremely expensive infrastructure. Creators can use TikTok/IG. |
-| **Automated Customs Calculator** | API predicting border taxes. | Impossible to maintain accurately. Travelers must quote manually. |
-| **Partial Payment** | Allow deposit before full payment. | Introduces split escrow states, refund complexity, and increases operational overhead. |
+| **Payment Gateway & Escrow** | Escrow holding, payment integration (Xendit/Midtrans), or checkout interfaces. | Validates request workflow adoption before introducing transaction complexities. |
+| **Quotation Engine** | Forms and states for travelers to input Item Price, Jastip Fee, or negotiate total pricing. | Defer financial negotiation to external channels (e.g., chat) if needed. |
+| **Baggage Capacity Automation** | Strict suitcase weight calculation (in kg) and automatic quote reservations. | Adds unnecessary database and logic complexity for early-stage validation. |
+| **Quote Expiry & 24h Expiry Clock**| Automatic expiration timers for requests or quotes. | Unnecessary without payment constraints. |
+| **Admin Dispute / Refund Overrides**| Admin dashboards to override transaction payments and trigger refunds. | Escrow is out of scope; hence disputes are settled offline. |
+| **Logistics & Courier APIs** | Integration with local couriers (JNE/GoSend) or automated AWB generation. | Travelers handle shipping and delivery confirmation manually. |
+| **KYC Identity Verification** | Government ID upload and admin approval for travelers. | Relies on pre-existing social trust and links sharing. |
+| **In-App Chat** | Embedded instant messaging between shopper and traveler. | Causes massive scope creep; structured forms are sufficient. |

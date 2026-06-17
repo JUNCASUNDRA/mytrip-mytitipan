@@ -9,28 +9,28 @@ predecessor: docs/02-product/strategy/product-vision.md
 
 > **Status**: 📝 Draft **Last Updated**: 2026-06-14
 
-This document defines the strict Minimum Viable Product (MVP) for My Trip My Titipan. We are constrained by a 3-month launch window and a 3–5 person engineering team.
+This document defines the strict Minimum Viable Product (MVP) for My Trip My Titipan under the Phase 1 Simplification model. We are constrained by a 3-month launch window and a 3–5 person engineering team.
 
 ## 1. Core Value Proposition
 
-The MVP exists to validate one core hypothesis:
+The Phase 1 MVP exists to validate one core hypothesis:
 
-**Shoppers are willing to pay upfront into an Escrow system for a product requested through a Traveler's trip page, while Travelers are willing to fulfill requests in exchange for a service fee.**
+**Can Travelers and Shoppers use a structured platform to record and manage jastip requests without relying on scattered chat applications and unstructured social media posts?**
 
 ## Validation Metrics
 
 The MVP validates the hypothesis if:
-- X% of submitted requests receive traveler quotations
-- X% of accepted quotes complete escrow payment
-- X% of paid orders reach delivery completion
-- Average transaction completion time is acceptable
-- Repeat usage occurs from shoppers/travelers
+- travelers publish upcoming trips on the platform.
+- shoppers submit structured product requests.
+- travelers accept and manually update request statuses.
+- users complete the request lifecycle to completion.
+- repeat usage occurs from shoppers and travelers.
 
 ---
 
 ## 2. Core MVP Capabilities
 
-The MVP is intentionally focused on enabling one complete and trusted transaction flow from trip creation to escrow payout.
+The Phase 1 MVP is intentionally focused on enabling a lightweight coordination and record-keeping flow.
 
 ### 1. Trip Publisher
 
@@ -38,7 +38,7 @@ Travelers can create a trip by providing:
 
 - Destination
 - Travel Dates
-- Available Baggage Capacity
+- Optional baggage notes
 
 The platform generates a unique shareable trip link.
 
@@ -46,30 +46,19 @@ Example:
 
 `mytrip.com/t/budi-tokyo-24`
 
-**Purpose:** Creates supply and enables external traffic acquisition.
+**Purpose:** Creates supply and replaces manual social media posts with a structured link.
 
 ---
 
-### 2. Traveler Profile
-
-Displays:
-* Traveler name and profile photo
-* Completed trips count
-* Completed orders count
-* Reviews and ratings
-
-**Purpose:** Provides social proof and reputation trust signals.
-
----
-
-### 2.b Traveler Trip Page
+### 2. Traveler Trip Page
 
 Displays:
 * Traveler profile summary
 * Trip destination and travel dates
-* Available baggage capacity status (Open / Limited / Full)
+* Active shopper requests for the trip
+* Request status (Requested → Accepted → Purchased → Delivered → Completed)
 
-**Purpose:** Provides route timeline and active capacity details.
+**Purpose:** Allows shoppers to see available trip information and track request statuses.
 
 ---
 
@@ -81,135 +70,95 @@ Shoppers can submit:
 - Product URL
 - Product Photo
 - Quantity
-- Maximum Budget
+- Notes
+
+*Escrow dependencies, payment gateway integrations, checkout loops, and willingness-to-pay budget constraints are completely removed.*
 
 **Purpose:** Standardizes demand capture and eliminates unstructured chat-based requests.
 
 ---
 
-### 4. Quotation & Capacity Management
+### 4. Request Management
 
-Travelers review incoming requests and respond with:
+Travelers review incoming requests and manually update the request status as it progresses.
 
-- Item Price
-- Jastip Fee
-- Total Price
+*All automated capacity reservations, baggage limit calculations (kg), quotation engines (Item Price + Jastip Fee), and 24-hour expiration clocks are removed.*
 
-The platform temporarily reserves baggage capacity for a limited period (e.g. 24 hours). Capacity reservation must respect remaining available capacity.
-
-If payment is not completed before expiry:
-
-* Quote expires
-* Reserved capacity is automatically released
-
-**Purpose:** Prevents overbooking while allowing multiple concurrent requests within remaining capacity.
+**Purpose:** Replaces manual spreadsheet and chat-based order tracking.
 
 ---
 
-### 5. Escrow Payment
+### 5. Request Tracking
 
-Shoppers pay the quoted amount through an integrated payment gateway.
+The platform tracks request progress through the following simplified manual states:
 
-After successful payment:
+- **Requested:** Shopper submitted request.
+- **Accepted:** Traveler accepted the request.
+- **Processing:** Traveler is in travel/procurement phase.
+- **Completed:** Shopper confirmed receipt of the item.
+- **Reviewed:** Shopper submitted review and rating feedback.
 
-- Funds are held in Escrow
-- Capacity reservation becomes locked
-- Traveler receives confirmation to proceed with purchase
-
-**Purpose:** Protects both parties and reduces fraud risk.
-
----
-
-### 6. Order Tracking
-
-The platform tracks order progress through the following statuses:
-
-- Requested
-- Quoted
-- Payment Pending
-- Paid
-- Purchasing
-- Purchased
-- In Transit
-- Delivered
-- Completed
-
-> **Implementation Note:**
-> MVP requires state transition tracking, not a fully optimized workflow UI.
-
-**Purpose:** Provides transparency throughout the transaction lifecycle.
+**Purpose:** Provides transparency throughout the request lifecycle.
 
 ---
 
-### 7. Reviews & Ratings
+### 6. Reviews & Ratings
 
-After successful delivery:
+After a shopper marks an order as completed:
 
-- Shopper leaves a rating
+- Shopper leaves a rating (1-5 stars)
 - Shopper leaves a written review
 
-Reviews are displayed on the Traveler profile.
+Reviews are displayed on the Traveler's profile.
 
-**Purpose:** Creates a trust loop without requiring identity verification during MVP.
+**Purpose:** Creates a trust loop based on actual completed request history.
 
 ---
 
-### 8. Order Exception Handling
+### 7. Simple Record History
 
-Exceptional states are handled by admin intervention.
+The system records and stores:
 
-Examples:
-- Item unavailable (out of stock)
-- Traveler unable to purchase / travel cancellation
-- Shipping issues (lost/damaged package)
-- Refund processing
+- Completed requests
+- Past trip histories
 
-**Purpose:** Provides a manual safety net for transaction resolution.
+**Purpose:** Creates a basic transaction history to serve as a baseline for future reputation features.
 
 ---
 
 ## 3. What is Explicitly Out of Scope (Deferred to V2)
 
-### Discovery & Social Features
+### Payment & Escrow Subsystem
 
-- Destination Discovery Feed
-- Traveler Search Directory
-- Recommendation Algorithms
-- Community Forums
-- Social Following System
+- Payment gateway integrations (Midtrans/Xendit)
+- Escrow fund holding logic
+- Quotation calculations (Item Price + Jastip Fee structures)
+- Payout distribution systems
+- Transactional billing and invoice generation
 
-### Creator Commerce Features
-
-- Creator Storefronts
-- Jastip by Spot Collections
-- Live Shopping
-- Affiliate & Referral Programs
-
-### Trust & Compliance
+### Trust & Identity
 
 - Advanced Traveler Verification (KYC)
 - Automated Fraud Detection
 - Advanced Reputation Badges
 
-### Logistics & Operations
+### Logistics & Courier Operations
 
-- Auto-generated AWB
-- Logistics Provider Integration
-- Real-time Shipment Tracking
-- Automated Customs Calculation
+- Auto-generated AWB shipping labels
+- Courier API integrations
+- Real-time shipment tracking
 
-### Communication
+### Communications & Discovery
 
 - In-App Chat
-- Voice Calls
-- Video Calls
+- Destination Discovery Feed or Traveler Directories
 
 ---
 
 ## 4. MVP Success Criteria
 
-The MVP will be considered successful if it can consistently facilitate a complete transaction flow:
+The MVP will be considered successful if it can consistently facilitate a complete request lifecycle:
 
-Trip Published → Product Requested → Quote Sent → Escrow Paid → Item Purchased → Item Delivered → Escrow Released → Review Submitted
+Trip Published → Product Requested → Request Accepted → Request Processing → Request Completed → Traveler Reviewed
 
-without requiring manual intervention for the majority of transactions, except predefined operational cases (e.g. disputes, refund requests, logistics issues).
+without requiring transaction checkout steps, administrative intervention, or payment gateway APIs.

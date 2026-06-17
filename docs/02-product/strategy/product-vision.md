@@ -67,7 +67,7 @@ To ensure we are building a vibrant, travel-driven ecosystem rather than just a 
 * **Traveler Profiles & Reputation:** Profiles showcasing traveler identity, upcoming trips, transaction history (completed trips/orders count), and reviews.
 * **Quoting & Negotiation Workflow:** Standardized tools for Travelers to respond to Product Requests with transparent pricing.
 * **Trust Infrastructure Integration:** Escrow Payment handling (holding funds until confirmed delivery), traveler profile history, and reviews. Identity verification (KYC) is deferred to a future phase.
-* **Order Management Dashboard:** Essential status tracking for both parties (Requested, Accepted, Paid, Purchased, Shipped, Delivered).
+* **Order Management Dashboard:** Essential status tracking for both parties (Requested, Accepted, Processing, Completed, Reviewed baseline for Phase 1).
 
 ### Out of Scope
 
