@@ -56,7 +56,7 @@ Displays:
 * Traveler profile summary
 * Trip destination and travel dates
 * Active shopper requests for the trip
-* Request status (Requested → Accepted → Purchased → Delivered → Completed)
+* Request status (Requested → Accepted → In Progress → Ready for Delivery → Completed)
 
 **Purpose:** Allows shoppers to see available trip information and track request statuses.
 
@@ -94,9 +94,9 @@ The platform tracks request progress through the following simplified manual sta
 
 - **Requested:** Shopper submitted request.
 - **Accepted:** Traveler accepted the request.
-- **Processing:** Traveler is in travel/procurement phase.
-- **Completed:** Shopper confirmed receipt of the item.
-- **Reviewed:** Shopper submitted review and rating feedback.
+- **In Progress:** Traveler is in travel/procurement/coordination phase.
+- **Ready for Delivery:** Traveler marked item ready for delivery/handover.
+- **Completed:** Delivery/handover confirmed.
 
 **Purpose:** Provides transparency throughout the request lifecycle.
 
@@ -159,6 +159,6 @@ The system records and stores:
 
 The MVP will be considered successful if it can consistently facilitate a complete request lifecycle:
 
-Trip Published → Product Requested → Request Accepted → Request Processing → Request Completed → Traveler Reviewed
+Trip Published → Product Requested → Request Accepted → Request In Progress → Request Ready for Delivery → Request Completed
 
 without requiring transaction checkout steps, administrative intervention, or payment gateway APIs.

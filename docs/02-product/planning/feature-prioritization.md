@@ -26,7 +26,7 @@ These are non-negotiable. Without these, the platform cannot function as a reque
 | --- | --- | --- |
 | **Trip Publisher** | Travelers can input travel destination, dates, optional notes and get a shareable URL. | Creates the supply loop. |
 | **Product Request Form** | Shoppers can upload photo, URL, item name, quantity, and notes. No budget or payment required. | Captures structured shopper demand. |
-| **Request Lifecycle Management** | Travelers review incoming requests and manually transition status: Requested → Accepted → Purchased → Delivered → Completed. | Replaces spreadsheets with a central tracking workflow. |
+| **Request Lifecycle Management** | Travelers review incoming requests and manually transition status: Requested → Accepted → In Progress → Ready for Delivery → Completed. | Replaces spreadsheets with a central tracking workflow. |
 | **Request Timeline** | Users can view state change history logs for trust. | Since escrow is out of scope, the timeline history serves as the primary trust verification loop. |
 | **Traveler Profile** | Public profiles showing traveler name, photo, trip history, request completion history, and reviews. | Builds trust through social proof and history instead of count indicators that start at 0. |
 | **Reviews & Ratings** | Star ratings (1-5) and written feedback, triggered when shopper marks request as completed. | Core mechanism to build reputation. |
@@ -38,7 +38,7 @@ These add significant value but are not strictly required for the first 100 requ
 
 | Feature | Description | Reason |
 | --- | --- | --- |
-| **Basic Email Notifications** | Email notifications sent when order status changes (e.g. accepted, purchased, delivered). | Prevents users from needing to poll the platform. |
+| **Basic Email Notifications** | Email notifications sent when order status changes (e.g. accepted, in progress, ready for delivery). | Prevents users from needing to poll the platform. |
 
 ## 3. Could Have (V2.0 - Month 5 to 6)
 

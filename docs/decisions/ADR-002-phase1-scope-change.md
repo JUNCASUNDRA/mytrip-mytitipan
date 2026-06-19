@@ -25,5 +25,5 @@ The system validates the core hypothesis of whether Travelers and Shoppers will 
 
 *   **Baggage Capacity:** Automated weight calculations (kg) are removed. Baggage limitations are coordinated manually via optional trip notes.
 *   **KYC / Identity:** KYC verification workflows are removed. User identity validation is managed by pre-existing social/network trust loops where travelers share direct links.
-*   **Fulfillment States:** Restructured the order/request lifecycle to use five simple manual statuses: `Requested` → `Accepted` → `Purchased` → `Delivered` → `Completed`.
+*   **Fulfillment States:** Restructured the order/request lifecycle to use five simple manual statuses: `Requested` → `Accepted` → `In Progress` → `Ready for Delivery` → `Completed`.
 *   **Deferred Scope:** Courier API integrations, admin dashboards, and KYC verification are deferred to future stages (Phase 2 / Phase 3).

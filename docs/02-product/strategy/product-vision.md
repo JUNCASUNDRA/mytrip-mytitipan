@@ -64,14 +64,14 @@ To ensure we are building a vibrant, travel-driven ecosystem rather than just a 
 * **Trip Planner:** The core engine allowing Travelers to create and manage itineraries, travel dates, and available capacity.
 * **Trip Link Sharing (MVP Discovery):** The primary channel for matching. Travelers share direct links to their specific trips via social media/messaging apps, leading shoppers directly to their request page.
 * **Product Request Engine:** Structured forms allowing Shoppers to request specific items, creating clear demand signals.
-* **Traveler Profiles & Reputation:** Profiles showcasing traveler identity, upcoming trips, transaction history (completed trips/orders count), and reviews.
-* **Quoting & Negotiation Workflow:** Standardized tools for Travelers to respond to Product Requests with transparent pricing.
-* **Trust Infrastructure Integration:** Escrow Payment handling (holding funds until confirmed delivery), traveler profile history, and reviews. Identity verification (KYC) is deferred to a future phase.
-* **Order Management Dashboard:** Essential status tracking for both parties (Requested, Accepted, Processing, Completed, Reviewed baseline for Phase 1).
+* **Traveler Profiles & Reputation:** Profiles showcasing traveler identity, upcoming trips, completed requests, and reviews.
+* **Order Management Dashboard:** Essential status tracking for both parties (Requested, Accepted, In Progress, Ready for Delivery, Completed baseline for Phase 1).
 
 ### Out of Scope
 
 * Centralized internal marketplace discovery feed or traveler listing directory (deferred to V2).
+* Escrow Payment handling, digital payment checkouts, and financial ledger features (deferred to V2).
+* Standardized quoting or quotation/pricing calculators (deferred to V2).
 * Native Live Shopping video broadcasting (leveraging existing social channels for MVP).
 * Complex AI-driven hyper-personalized recommendation algorithms.
 * Direct API integration with international cross-border customs systems.
@@ -79,6 +79,6 @@ To ensure we are building a vibrant, travel-driven ecosystem rather than just a 
 
 ### Non-Goals
 
-* **We are NOT a fintech or payment gateway:** Escrow is a necessary supporting infrastructure, not our primary value proposition.
+* **We are NOT a fintech or payment gateway:** Escrow is a future supporting infrastructure, not our primary value proposition.
 * **We are NOT a traditional e-commerce marketplace:** We will not manage warehouses, host static inventory catalogs, or compete on instant local delivery.
 * **We are NOT a pure social network:** While we leverage social mechanics, every feature is strategically designed to drive towards a trusted, travel-based commerce outcome.

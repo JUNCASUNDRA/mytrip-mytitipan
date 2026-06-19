@@ -29,11 +29,11 @@ The objective of Phase 1 is to validate the core user behavior: will travelers a
 6.  **Simple Record History:** Persists past trip history and completed request records to serve as the reputation baseline.
 
 ## 3. Scope Boundaries
-The status transitions are non-transactional:
+The status transitions are coordination-focused:
 
-$$\text{Requested} \longrightarrow \text{Accepted} \longrightarrow \text{Processing} \longrightarrow \text{Completed} \longrightarrow \text{Reviewed}$$
+$$\text{Requested} \longrightarrow \text{Accepted} \longrightarrow \text{In Progress} \longrightarrow \text{Ready for Delivery} \longrightarrow \text{Completed}$$
 
-To avoid premature transactional expectations, we utilize **Processing** instead of *Purchased* / *Delivered*.
+To avoid premature transactional expectations, we utilize **In Progress** and **Ready for Delivery** instead of *Purchased* / *Delivered*.
 
 ## 4. Excluded Subsystems (Deferred to Phase 2/3)
 *   No payment gateway checkouts, escrow accounts, or quotation calculations.

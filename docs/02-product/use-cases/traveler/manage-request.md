@@ -33,9 +33,9 @@ Allows a Traveler to view shopper requests submitted to their active trip link a
 3.  Traveler inspects the photo, product reference URL, quantity, and notes.
 4.  Traveler clicks "Accept Request" to commit to finding the item.
 5.  System updates request status to `Accepted`, notifies the shopper, and appends an entry to the **Request Timeline**.
-6.  Traveler travels, purchases/procures the item, and clicks "Update to Processing" to indicate the request is in progress.
-7.  System updates request status to `Processing`, notifies the shopper, and updates the timeline log.
-8.  Traveler returns home, coordinates offline shipment and payment with shopper, and waits for shopper confirmation.
+6.  Traveler clicks "Update Progress" to indicate the request is in progress, transitioning status to `In Progress`.
+7.  Traveler procures/arranges the item and clicks "Mark Ready" to shift status to `Ready for Delivery`.
+8.  Traveler coordinates handover and offline payment, clicks "Hand Over Item" (or Shopper clicks "Confirm Receipt") to finalize and transition the status to `Completed`.
 
 ---
 
