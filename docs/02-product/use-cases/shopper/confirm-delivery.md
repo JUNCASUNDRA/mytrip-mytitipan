@@ -17,13 +17,13 @@ outputs:
 > **Status**: Approved **Last Updated**: 2026-06-14
 
 ## 1. Brief Description
-Allows a Shopper to confirm receipt of the item physically (changing request status from `Processing` to `Completed`) and write a review with star ratings (changing status from `Completed` to `Reviewed`).
+Allows a Shopper to confirm receipt of the item physically (changing request status from `Ready for Delivery` to `Completed`) and write a review with star ratings.
 
 ---
 
 ## 2. Actors & Preconditions
 *   **Primary Actor:** Shopper
-*   **Preconditions:** Shopper is authenticated, and the request status is `Processing`.
+*   **Preconditions:** Shopper is authenticated, and the request status is `Ready for Delivery`.
 
 ---
 
@@ -35,7 +35,7 @@ Allows a Shopper to confirm receipt of the item physically (changing request sta
 5.  System prompts the shopper to leave traveler feedback.
 6.  Shopper inputs a Star Rating (1 to 5 stars) and enters a written feedback review.
 7.  Shopper clicks "Submit Review".
-8.  System saves review in the database, updates status to `Reviewed`, updates the traveler's aggregate score, and shows the feedback on the traveler's profile page.
+8.  System saves review in the database, updates the traveler's aggregate score, and shows the feedback on the traveler's profile page. Request status remains `Completed`.
 
 ---
 

@@ -42,18 +42,20 @@ sequenceDiagram
     S->>P: Open Trip Link & inspect traveler history
     S->>P: Submit Request Form (name, photo, URL, quantity, notes)
     P-->>T: New Request Notification
-    T->>P: Accept Request
+    T->>P: Accept Request (status: ACCEPTED)
     P-->>S: Notify Request Accepted
-    T->>P: Sourcing/procuring item & updates status to Processing
-    P-->>S: Notify status update to Processing
-    T->>P: Ships domestically & coordinates offline payment
-    S->>P: Confirm Receipt (Completed)
-    S->>P: Leave Traveler Review & Rating (Reviewed)
+    T->>P: Update Progress (status: IN_PROGRESS)
+    P-->>S: Notify progress update
+    T->>P: Mark Ready (status: READY_FOR_DELIVERY)
+    P-->>S: Notify item is ready for delivery
+    T->>P: Hand Over Item (offline payment settled directly)
+    S->>P: Confirm Receipt (status: COMPLETED)
+    S->>P: Leave Traveler Review & Rating (Review Form)
 ```
 
 ### Flow Steps Details:
-1.  **Supply Creation:** Traveler registers destination, travel dates, and optional notes (space limits, preferred stores) and copies link.
-2.  **Request Submission:** Shopper visits trip page, authenticates (Google/OTP), enters item name, photo, reference URL, quantity, and notes. Submits it.
-3.  **Acceptance:** Traveler reviews incoming request backlog, selects request, and clicks "Accept".
-4.  **Updates:** Traveler procures the item, ships it, and clicks "Update to Processing" to indicate fulfillment. Offline payment is settled directly.
-5.  **Receipt & Review:** Shopper receives the item, clicks "Confirm Receipt" (completing the request), and leaves a star rating and written feedback review.
+1.  **Supply Creation:** Traveler registers destination, travel dates, and optional notes (space limits, preferred stores) and copies the generated link.
+2.  **Request Submission:** Shopper visits trip page, authenticates (Google/OTP), reviews traveler's completed requests/reviews, and submits request details (item name, photo, reference URL, quantity, notes).
+3.  **Acceptance:** Traveler reviews incoming request backlog and clicks "Accept Request", shifting the request state to `ACCEPTED`.
+4.  **Fulfillment Coordination:** Traveler updates progress to `IN_PROGRESS` while sourcing or handling coordination, and then clicks "Mark Ready" to shift the request state to `READY_FOR_DELIVERY`. Offline payment and handover methods are settled directly.
+5.  **Receipt & Review:** Shopper receives the item, clicks "Confirm Receipt" (moving the request state to `COMPLETED`), and fills the review form with a star rating and written feedback.

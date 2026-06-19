@@ -36,8 +36,8 @@ This roadmap aligns engineering effort with the Go-To-Market strategy, focusing 
 
 * **Tech:** Simple status state transition mechanics, review submission endpoints.
 * **Product:**
-  * Sourcing status updates (Traveler marks as Purchased).
-  * Dispatch status updates (Traveler marks as Delivered).
+  * Sourcing status updates (Traveler updates progress to In Progress).
+  * Dispatch status updates (Traveler marks as Ready for Delivery).
   * Shopper receipt confirmation (transitions request to Completed).
   * Reviews & Ratings System (text reviews and star ratings).
 * **Milestone:** **MVP Public Launch (Constrained to early adoption validation on Indonesia ↔ Japan route)**.

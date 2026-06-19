@@ -35,7 +35,7 @@ This document captures the shopper stories related to confirming delivery and le
 
 ```gherkin
 Scenario: Manual shopper delivery confirmation
-  Given a request is in status "Processing"
+  Given a request is in status "Ready for Delivery"
   And I am logged in as the Shopper
   When I click "Confirm Receipt"
   Then the request status should change to "Completed"
@@ -66,7 +66,6 @@ Scenario: Submit review successfully
   And I write a text review: "Great service, item arrived in perfect condition!"
   And I click "Submit Review"
   Then the review should be saved in the database
-  And the request status changes to "Reviewed"
   And the review should be publicly visible on the Traveler's profile page
   And the Traveler's aggregate star rating should be updated
 ```
@@ -88,11 +87,11 @@ Scenario: Submit review successfully
 
 ```gherkin
 Scenario: Shopper views request timeline history
-  Given my request is in status "Processing"
+  Given my request is in status "In Progress"
   When I navigate to my request details page
   Then I should see a chronological Request Timeline showing:
     | Timestamp | Event | Action Taken |
     | 2026-06-14 10:00 | Requested | Shopper submitted the request form |
     | 2026-06-14 14:00 | Accepted | Traveler accepted the request |
-    | 2026-06-14 18:00 | Processing | Traveler updated status to processing |
+    | 2026-06-14 18:00 | In Progress | Traveler updated status to In Progress |
 ```

@@ -1,4 +1,4 @@
-# Design System
+`# Design System
 
 > Komponen, design tokens, dan guidelines untuk konsistensi visual.
 
@@ -7,7 +7,7 @@
 ### Colors (Proposed)
 
 | Token | Value | Usage |
-|-------|-------|-------|
+| --- | --- | --- |
 | `--color-primary` | `#0066FF` | Trust Blue (Brand, Primary CTA) |
 | `--color-primary-light` | `#E6F0FF` | Light Blue (Hover, Backgrounds) |
 | `--color-primary-dark` | `#0044AA` | Deep Blue (Active states) |
@@ -21,7 +21,7 @@
 ### Typography
 
 | Token | Value | Usage |
-|-------|-------|-------|
+| --- | --- | --- |
 | `--font-family` | `'Inter', sans-serif` | Body text |
 | `--font-heading` | `'Inter', sans-serif` | Headings |
 | `--font-size-xs` | `0.75rem` | Caption |
@@ -32,7 +32,7 @@
 ## 2. Components Status
 
 | Component | Variants | Status |
-|-----------|----------|--------|
+| --- | --- | --- |
 | Button | Primary, Secondary, Ghost, Danger | 🏗️ Defined |
 | Input | Text, Password, Search, Textarea | 🏗️ Defined |
 | Card | Traveler Card, Product Feed, Order Card | 📝 Drafted |
@@ -41,10 +41,11 @@
 | Badge | Verified, Expertise, Status | 📝 Drafted |
 
 ## 3. UI Principles for MyTrip-MyTitipan
+
 1. **Trust-Centric:** Gunakan badge verifikasi yang kontras dan informatif.
 2. **Clarity over Flash:** Informasi harga dan status escrow harus selalu terlihat jelas.
 3. **Mobile First:** Prioritaskan penggunaan satu tangan karena jastiper sering menggunakannya saat bepergian.
 
 ---
 
-> **Output ke**: Frontend components di [apps/frontend/](../../../../apps/frontend/)
+> **Output ke**: Frontend components di [apps/frontend/](../../../../apps/frontend/)`

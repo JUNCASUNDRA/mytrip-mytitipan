@@ -20,7 +20,7 @@ This document captures the technical and user-experience impacts of transitionin
 ---
 
 ## 1. Database Schema Changes
-*   **Order Statuses:** Introduce database enum expansion from `Requested`, `Accepted`, `Processing`, `Completed`, `Reviewed` to:
+*   **Order Statuses:** Introduce database enum expansion from `Requested`, `Accepted`, `In Progress`, `Ready for Delivery`, `Completed` to:
     *   `Quoted`
     *   `Payment Pending`
     *   `Paid`
