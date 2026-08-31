@@ -95,11 +95,11 @@ Every status has:
 2. **SCR-007: Create Trip**: Simple itinerary form.
 3. **SCR-008: Trip Share**: Success modal showing share links.
 4. **SCR-009: Request Review**: Sourcing request details with Accept/Decline triggers.
-5. **SCR-010: Traveler Request Detail**: Progress tracker with state-advancement actions ("Update Progress", "Mark Ready", "Hand Over").
+5. **SCR-010: Traveler Request Detail**: Progress tracker with state-advancement actions ("Update Progress", "Mark Ready", "Fulfill Request").
 
 ### Shopper Screens:
 1. **SCR-002: Trip Landing Page**: Public landing page seen by shoppers clicking shared links. Displays route and traveler history.
-2. **SCR-003: Request Form**: Inputs for product details, URLs, quantity, budget, and image.
+2. **SCR-003: Request Form**: Inputs for product details, URLs, quantity, estimated/reference price, and image.
 3. **SCR-004: Shopper Dashboard**: Main view containing the list of active shopper requests.
 4. **SCR-005: Request Detail**: Tracking dashboard mapping the request status timeline.
 5. **SCR-011: Review Form**: Rating selector and text feedback block.

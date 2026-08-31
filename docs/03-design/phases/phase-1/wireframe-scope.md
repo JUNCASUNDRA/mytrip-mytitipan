@@ -16,14 +16,14 @@ This document specifies the exact screen inventory, user access permissions, and
 | --- | --- | --- | --- | --- | --- |
 | **SCR-001** | Login | All | Authenticates users via Google SSO or mobile phone OTP. | "Log in with Google", "Send OTP" | Landing / Redirected |
 | **SCR-002** | Trip Landing Page | Shopper (Public) | Public page showing traveler profile, travel routes, dates, past completed trips, and shopper reviews. | "Request Item" | Clicked Shared Link |
-| **SCR-003** | Request Form | Shopper | Structured input form to submit product name, URL, photo, and max budget. | "Submit Request" | SCR-002 |
+| **SCR-003** | Request Form | Shopper | Structured input form to submit product name, URL, photo, estimated/reference price, and notes for traveler. | "Submit Request" | SCR-002 |
 | **SCR-004** | Shopper Dashboard | Shopper | Personal space to manage active requests, tracking progress, and profile details. | "Confirm Receipt", "View Details" | SCR-001 |
 | **SCR-005** | Request Detail | Shopper | Shopper-side tracking view showing request timeline progression. | "Confirm Receipt", "Cancel Request" | SCR-004 |
-| **SCR-006** | Traveler Dashboard | Traveler | Portal showing active trips, pending incoming shopper requests, active orders, and profile stats. | "+ Create Trip", "Review Request" | SCR-001 |
-| **SCR-007** | Create Trip | Traveler | Form to publish travel details: departure/arrival airports, dates, and capacity notes. | "Publish Trip" | SCR-006 |
+| **SCR-006** | Traveler Dashboard | Traveler | Portal showing active trips, pending incoming shopper requests, active requests, and profile stats. | "+ Create Trip", "Review Request" | SCR-001 |
+| **SCR-007** | Create Trip | Traveler | Form to publish travel details: departure/arrival airports, dates, and optional coordinator notes. | "Publish Trip" | SCR-006 |
 | **SCR-008** | Trip Share | Traveler | Displays the unique shareable link for copying and posting. | "Copy Link", "Share to WhatsApp" | SCR-007 |
 | **SCR-009** | Request Review | Traveler | Interface for reviewing shopper request parameters. | "Accept Request", "Decline Request" | SCR-006 / Email Alert |
-| **SCR-010** | Traveler Request Detail| Traveler | Detailed request tracking screen with status indicators and state transitions. | "Update Progress", "Mark Ready", "Hand Over Item" | SCR-006 |
+| **SCR-010** | Traveler Request Detail| Traveler | Detailed request tracking screen with status indicators and state transitions. | "Update Progress", "Mark Ready", "Fulfill Request" | SCR-006 |
 | **SCR-011** | Review Form | Shopper | Text and star rating form to evaluate traveler performance after receipt. | "Submit Review" | SCR-005 / SCR-004 |
 
 ---

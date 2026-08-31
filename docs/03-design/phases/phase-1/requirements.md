@@ -21,7 +21,7 @@ This document outlines the UX requirements, layout specifications, state transit
 
 ### Shopper Landing Pages & Dashboards
 - **Trip Landing Page**: Public landing screen displaying traveler routes, dates, past completed trips list, and shopper reviews. Primary CTA: "Request Item".
-- **Request Form**: Form fields for item name, quantity, estimated budget/price, reference link, notes, and photo attachment.
+- **Request Form**: Form fields for item name, quantity, estimated/reference price, reference link, notes for traveler, and photo attachment.
 - **Shopper Dashboard**: Home view containing Shopper's active requests log.
 - **Request Detail**: Progress tracker with visual timeline (Requested -> Accepted -> In Progress -> Ready for Delivery -> Completed).
 - **Review Form**: Feedback submission interface consisting of a star rating selector (1-5 stars) and a text area.
